@@ -25,7 +25,7 @@ export class Auth {
     this.removingTokenLS();
   }
   private addingTokenLS(token) {
-    localStorage.setItem('token', JSON.stringify(token));
+    localStorage.setItem('token', token);
   }
   private removingTokenLS() {
     localStorage.removeItem('token');

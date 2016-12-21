@@ -12,13 +12,31 @@ import { Sidebar } from './sidebar/sidebar.component';
 import { Navbar } from './navbar/navbar.component';
 import { ChatSidebar } from './chat-sidebar/chat-sidebar.component';
 import { ChatMessage } from './chat-sidebar/chat-message/chat-message.component';
-import {SearchPipe} from './pipes/search.pipe';
-import {NotificationLoad} from './notifications/notifications-load.directive';
-import {Notifications} from './notifications/notifications.component';
+import { SearchPipe } from './pipes/search.pipe';
+import { NotificationLoad } from './notifications/notifications-load.directive';
+import { Notifications } from './notifications/notifications.component';
+import { ProductsService } from './products/products.service';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
-  imports: [CommonModule, TooltipModule, ROUTES, FormsModule],
-  declarations: [Layout, Sidebar, Navbar, ChatSidebar, SearchPipe, Notifications, NotificationLoad, ChatMessage]
+  imports: [
+    CommonModule,
+    TooltipModule,
+    ROUTES,
+    FormsModule
+  ],
+  declarations: [
+    Layout,
+    Sidebar,
+    Navbar,
+    ChatSidebar,
+    SearchPipe,
+    Notifications,
+    NotificationLoad,
+    ChatMessage,
+    ProductsComponent
+  ],
+  providers: [ProductsService]
 })
 export default class LayoutModule {
 }
