@@ -4,6 +4,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
+import { Auth } from './auth/auth.service';
 
 /*
  * App Component
@@ -20,8 +21,7 @@ import { AppState } from './app.service';
 export class App {
 
   constructor(
-    public appState: AppState) {
-
+    public appState: AppState, private auth: Auth) {
   }
 
   ngOnInit() {
