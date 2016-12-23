@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppConfig } from '../app.config'
+import { AppConfig } from '../app.config';
+import { TranslateService } from 'ng2-translate';
 
 declare var jQuery: any;
 declare var Hammer: any;
@@ -26,7 +27,10 @@ export class Layout {
 
   constructor(config: AppConfig,
               el: ElementRef,
-              router: Router) {
+              router: Router,
+              private translate: TranslateService) {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
     this.el = el;
     this.config = config.getConfig();
     this.configFn = config;

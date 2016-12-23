@@ -1,7 +1,7 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
@@ -18,6 +18,8 @@ import { AppConfig } from './app.config';
 import { ErrorComponent } from './error/error.component';
 import { Auth } from './auth/auth.service';
 import { AuthGuard } from './auth/authGuard.service';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+import { SharedModule } from './shared/shared.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -46,7 +48,8 @@ type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    RouterModule.forRoot(ROUTES, { useHash: true }),
+    SharedModule.forRoot()
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

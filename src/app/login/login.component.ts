@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class Login implements OnInit {
   public loginForm: FormGroup;
   public errorAutorization = false;
+
   constructor(private auth: Auth,
               private formBuilder: FormBuilder,
               private router: Router) {

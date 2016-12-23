@@ -17,13 +17,15 @@ import { NotificationLoad } from './notifications/notifications-load.directive';
 import { Notifications } from './notifications/notifications.component';
 import { ProductsService } from './products/products.service';
 import { ProductsComponent } from './products/products.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     TooltipModule,
     ROUTES,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   declarations: [
     Layout,

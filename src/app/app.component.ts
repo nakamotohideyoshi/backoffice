@@ -5,6 +5,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
 import { Auth } from './auth/auth.service';
+import { TranslateService } from 'ng2-translate';
 
 /*
  * App Component
@@ -20,8 +21,11 @@ import { Auth } from './auth/auth.service';
 })
 export class App {
 
-  constructor(
-    public appState: AppState, private auth: Auth) {
+  constructor(public appState: AppState,
+              private auth: Auth,
+              private translate: TranslateService ) {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
   }
 
   ngOnInit() {
