@@ -40,6 +40,24 @@
       </a>
     </li>
   </ul>
+  <ul class="sidebar-nav" data-parent="#sidebar">
+    <li>
+      <a class="collapsed" data-target="#sidebar-categories" data-toggle="collapse">
+        <span class="icon">
+            <i class="fa fa-table"></i>
+        </span>
+        Categories
+        <i class="toggle fa fa-angle-down"></i>
+      </a>
+      <ul class="collapse" id="sidebar-categories">
+        <li>
+          <a [routerLink]=" ['categories', 0] ">
+            List
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
   <h5 class="sidebar-nav-title">Labels <a class="action-link" href="#"><i class="glyphicon glyphicon-plus"></i></a></h5>
   <!-- some styled links in sidebar. ready to use as links to email folders, projects, groups, etc -->
   <ul class="sidebar-labels">

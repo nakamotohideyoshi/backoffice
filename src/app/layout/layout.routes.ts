@@ -7,7 +7,8 @@ const routes: Routes = [
     { path: '', redirectTo: 'products', pathMatch: 'full' },
     { path: 'dashboard', loadChildren: () => System.import('../dashboard/dashboard.module') },
     { path: 'another-page', loadChildren: () => System.import('../another/another.module') },
-    { path: 'products', component: ProductsComponent }
+    { path: 'products', component: ProductsComponent },
+    { path: 'categories', loadChildren: () => System.import('../categories/categories.module') }
   ]}
 ];
 

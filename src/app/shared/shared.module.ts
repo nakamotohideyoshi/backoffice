@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 import { CommonModule } from '@angular/common';
 import { Http } from '@angular/http';
+import { CategoriesService } from './service/categories.service';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: []
+      providers: [CategoriesService]
     };
   }
 }

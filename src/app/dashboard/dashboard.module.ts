@@ -3,7 +3,7 @@ import { CommonModule }  from '@angular/common';
 
 import { RouterModule } from '@angular/router';
 import { Dashboard } from './dashboard.component.ts';
-import {Widget} from '../layout/widget/widget.directive';
+import { Widget } from '../layout/widget/widget.directive';
 
 export const routes = [
   { path: '', component: Dashboard, pathMatch: 'full' }
