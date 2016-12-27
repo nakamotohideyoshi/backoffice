@@ -3,7 +3,7 @@ import { Http, RequestOptionsArgs, Headers, RequestOptions } from '@angular/http
 
 @Injectable()
 export class CategoriesService {
-  public catUrl = 'http://api.reklambutiken.com/v1/categories/';
+  public catUrl = 'http://api.reklambutiken.com/v1/';
   constructor(private http: Http) {
   }
 
@@ -14,7 +14,33 @@ export class CategoriesService {
   }
   public getCategories(id?) {
     if (!id) id = 0;
-    return this.http.get( `${this.catUrl}${id}/subcategories`, this.requestOptions() )
+    return this.http.get( `${this.catUrl}categories/${id}`, this.requestOptions() )
       .map(res => res.json());
   }
+  public getCategoriesSubcategories(id?) {
+    if (!id) id = 0;
+    return this.http.get( `${this.catUrl}categories/${id}/subcategories`, this.requestOptions() )
+      .map(res => res.json());
+  }
+  public getCategoriesRoutes(id?) {
+    if (!id) id = 0;
+    return this.http.get( `${this.catUrl}routes/category/${id}`, this.requestOptions() )
+      .map(res => res.json());
+  }
+  public addCategoriesRoutesPost(body, id?) {
+    if (!id) id = 0;
+    return this.http.post( `${this.catUrl}routes/category/${id}`,
+      { slug: body['slug'] },
+      this.requestOptions() )
+      .map(res => res.json());
+  }
+  public setCategoriesRoutesPut(slug, id?) {
+    if (!id) id = 0;
+    return this.http.put(
+      `${this.catUrl}categories/${id}`,
+      { slug: slug },
+      this.requestOptions()
+    ).map(res => res.json());
+  }
 }
+

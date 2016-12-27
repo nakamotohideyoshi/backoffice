@@ -1,3 +1,14 @@
 {
-  "login_title": "Login"
+  "login_title": "Login",
+  "id": "ID",
+  "name": "Name",
+  "slug": "Slug",
+  "edit": "Edit",
+  "add": "Add",
+  "button": "button",
+  "categories_title": "Categories",
+  "categories_list": "List",
+  "categories_routes": "Routes",
+  "categories_rout": "rout",
+  "primary": "Primary"
 }

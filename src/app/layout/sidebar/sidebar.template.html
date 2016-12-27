@@ -46,13 +46,18 @@
         <span class="icon">
             <i class="fa fa-table"></i>
         </span>
-        Categories
+        {{"categories_title" | translate}}
         <i class="toggle fa fa-angle-down"></i>
       </a>
       <ul class="collapse" id="sidebar-categories">
         <li>
           <a [routerLink]=" ['categories', 0] ">
-            List
+            {{"categories_list" | translate}}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]=" ['categories/routes', 0] ">
+            {{"categories_routes" | translate}}
           </a>
         </li>
       </ul>

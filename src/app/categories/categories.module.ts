@@ -2,7 +2,7 @@ import 'jquery-slimscroll';
 
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { FormsModule }  from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }  from '@angular/forms';
 import { TooltipModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { SharedModule } from '../shared/shared.module';
 import { CategoriesRoutingModule, routingComponents } from './categories-routes.module';
@@ -13,6 +13,8 @@ import { CategoriesRoutingModule, routingComponents } from './categories-routes.
     TooltipModule,
     FormsModule,
     CategoriesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ],
   declarations: [ routingComponents ],
