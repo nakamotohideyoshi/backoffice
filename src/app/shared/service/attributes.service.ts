@@ -20,5 +20,10 @@ export class AttributesService {
     return this.http.get(`${this.apiUrl}${type}`, this.requestOptions())
       .map(res => res.json());
   }
+
+  public createAttribute(type, body) {
+    return this.http.post(`${this.apiUrl}${type}`, body, this.requestOptions())
+      .map(res => res.json());
+  }
 }
 

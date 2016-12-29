@@ -3,5 +3,24 @@
 }
 
 .attributes-table {
-  margin-bottom: 0px;
+  margin-bottom: 0;
+}
+
+.attributes-form {
+  background-color: white !important;
+  margin: 15px 0;
+  padding: 15px;
+  width: 100%;
+}
+
+.error {
+  background-color: #f2dede;
+  padding: 15px;
+}
+
+.color-tag {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
 }

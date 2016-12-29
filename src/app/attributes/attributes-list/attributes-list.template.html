@@ -20,10 +20,40 @@
           <tr *ngFor="let attribute of attributes;">
             <td>{{attribute.id}}</td>
             <td>{{attribute.name}}</td>
-            <td *ngIf="attributeType == 'color'">{{attribute.color}}</td>
+            <td *ngIf="attributeType == 'color'">
+              <span class="color-tag" [style.background]="attribute.color"></span>
+              {{attribute.color}}
+            </td>
           </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+    <div class="col-lg-6 col-lg-offset-3">
+      <div class="row">
+        <form [formGroup]="addAttributeForm" class="attributes-form">
+          <div class="form-group">
+            <label for="attrName" class="control-label">
+              {{attributeType+"_title" | translate}} {{"name" | translate}}
+            </label>
+            <input type="text" class="form-control" formControlName="name" id="attrName" placeholder="Name">
+            <p *ngIf="!!error" class="error">{{error}}</p>
+          </div>
+          <div class="form-group">
+            <div class="form-group" *ngIf="attributeType == 'color'">
+              <label for="attrColor" class="control-label">
+                {{"color_title" | translate}}
+              </label>
+              <input type="color" formControlName="color" id="attrColor">
+            </div>
+            <button class="btn btn-success"
+                    type="button" (click)="addAttribute()"
+                    [disabled]="!addAttributeForm.valid">
+              <i class="fa fa-plus"></i>
+              {{"add" | translate}} {{"attribute" | translate}}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
