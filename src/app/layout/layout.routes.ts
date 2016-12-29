@@ -8,7 +8,8 @@ const routes: Routes = [
     { path: 'dashboard', loadChildren: () => System.import('../dashboard/dashboard.module') },
     { path: 'another-page', loadChildren: () => System.import('../another/another.module') },
     { path: 'products', loadChildren: () => System.import('../products/products.module') },
-    { path: 'categories', loadChildren: () => System.import('../categories/categories.module') }
+    { path: 'categories', loadChildren: () => System.import('../categories/categories.module') },
+    { path: 'attributes', loadChildren: () => System.import('../attributes/attributes.module') }
   ]}
 ];
 

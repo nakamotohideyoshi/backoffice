@@ -6,10 +6,17 @@
   "edit": "",
   "add": "",
   "button": "",
+  "color": "",
   "routes_title": "",
   "route": "",
   "categories_title": "",
   "list_title": "",
   "primary": "",
-  "products_title": ""
+  "products_title": "",
+  "attributes_title": "",
+  "size_title": "",
+  "color_title": "",
+  "model_title": "",
+  "clothing_size_title": "",
+  "flavour_title": ""
 }

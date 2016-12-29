@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { Http } from '@angular/http';
 import { CategoriesService } from './service/categories.service';
 import { ProductsService } from './service/products.service';
+import { AttributesService } from './service/attributes.service';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         CategoriesService,
-        ProductsService
+        ProductsService,
+        AttributesService
       ]
     };
   }

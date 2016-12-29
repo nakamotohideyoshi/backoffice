@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <h1 class="page-title">
+      {{"attributes_title" | translate}} -
+      <span class="fw-semi-bold">
+        {{attributeType+"_title" | translate}}
+      </span>
+    </h1>
+    <div class="col-lg-12">
+      <div class="row h-background-color-white">
+        <table class="table table-bordered attributes-table">
+          <thead>
+          <tr>
+            <th>{{"id" | translate}}</th>
+            <th>{{"name" | translate}}</th>
+            <th *ngIf="attributeType == 'color'">{{"color" | translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let attribute of attributes;">
+            <td>{{attribute.id}}</td>
+            <td>{{attribute.name}}</td>
+            <td *ngIf="attributeType == 'color'">{{attribute.color}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

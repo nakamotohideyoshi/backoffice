@@ -83,6 +83,42 @@
         </li>
       </ul>
     </li>
+    <li>
+      <a class="collapsed" data-target="#sidebar-attributes" data-toggle="collapse">
+       <span class="icon">
+           <i class="fa fa-table"></i>
+       </span>
+        {{"attributes_title" | translate}}
+        <i class="toggle fa fa-angle-down"></i>
+      </a>
+      <ul class="collapse" id="sidebar-attributes">
+        <li>
+          <a [routerLink]=" ['attributes','size'] ">
+            {{"size_title" | translate}}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]=" ['attributes','color'] ">
+            {{"color_title" | translate}}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]=" ['attributes','model'] ">
+            {{"model_title" | translate}}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]=" ['attributes','clothing_size'] ">
+            {{"clothing_size_title" | translate}}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]=" ['attributes','flavour'] ">
+            {{"flavour_title" | translate}}
+          </a>
+        </li>
+      </ul>
+    </li>
   </ul>
   <h5 class="sidebar-nav-title">Labels <a class="action-link" href="#"><i class="glyphicon glyphicon-plus"></i></a></h5>
   <!-- some styled links in sidebar. ready to use as links to email folders, projects, groups, etc -->
