@@ -15,8 +15,6 @@ import { ChatMessage } from './chat-sidebar/chat-message/chat-message.component'
 import { SearchPipe } from './pipes/search.pipe';
 import { NotificationLoad } from './notifications/notifications-load.directive';
 import { Notifications } from './notifications/notifications.component';
-import { ProductsService } from './products/products.service';
-import { ProductsComponent } from './products/products.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -35,10 +33,9 @@ import { SharedModule } from '../shared/shared.module';
     SearchPipe,
     Notifications,
     NotificationLoad,
-    ChatMessage,
-    ProductsComponent
+    ChatMessage
   ],
-  providers: [ProductsService]
+  providers: []
 })
 export default class LayoutModule {
 }

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <h1 class="page-title">
+      {{"products_title" | translate}} -
+      <span class="fw-semi-bold">
+        {{"list_title" | translate}}
+      </span>
+    </h1>
+    <div class="col-lg-12">
+      <div class="row h-background-color-white">
+        <table class="table table-bordered products-table">
+          <thead>
+          <tr>
+            <th>{{"id" | translate}}</th>
+            <th>{{"name" | translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of products;">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

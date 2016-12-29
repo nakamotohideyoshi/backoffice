@@ -52,12 +52,33 @@
       <ul class="collapse" id="sidebar-categories">
         <li>
           <a [routerLink]=" ['categories', 0] ">
-            {{"categories_list" | translate}}
+            {{"list_title" | translate}}
           </a>
         </li>
         <li>
           <a [routerLink]=" ['categories/routes', 0] ">
-            {{"categories_routes" | translate}}
+            {{"routes_title" | translate}}
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a class="collapsed" data-target="#sidebar-products" data-toggle="collapse">
+       <span class="icon">
+           <i class="fa fa-table"></i>
+       </span>
+        {{"products_title" | translate}}
+        <i class="toggle fa fa-angle-down"></i>
+      </a>
+      <ul class="collapse" id="sidebar-products">
+        <li>
+          <a [routerLink]=" ['products','list'] ">
+            {{"list_title" | translate}}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]=" ['products','routes','iwPy8XA'] ">
+            {{"routes_title" | translate}}
           </a>
         </li>
       </ul>

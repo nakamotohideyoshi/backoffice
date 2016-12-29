@@ -1,8 +1,14 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+import {
+  TranslateModule,
+  TranslateLoader,
+  TranslateStaticLoader,
+  TranslateService
+} from 'ng2-translate';
 import { CommonModule } from '@angular/common';
 import { Http } from '@angular/http';
 import { CategoriesService } from './service/categories.service';
+import { ProductsService } from './service/products.service';
 
 @NgModule({
   imports: [
@@ -19,10 +25,22 @@ import { CategoriesService } from './service/categories.service';
 })
 
 export class SharedModule {
+
+  static translate;
+
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [CategoriesService]
+      providers: [
+        CategoriesService,
+        ProductsService
+      ]
     };
+  }
+
+  constructor (translate: TranslateService) {
+    translate.setDefaultLang('en');
+    translate.use('en');
+    SharedModule.translate = translate;
   }
 }

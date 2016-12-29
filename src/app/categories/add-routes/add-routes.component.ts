@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../../shared/service/categories.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { TranslateService } from 'ng2-translate';
+
 
 
 @Component({
@@ -17,10 +17,7 @@ export class AddRoutesCategories implements OnInit {
   public routesForm: FormGroup;
   constructor(private categoriesService: CategoriesService,
               private routeActiv: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private translate: TranslateService) {
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
+              private formBuilder: FormBuilder) {
     this.routesForm = this.formBuilder.group({
       slug: [ '', Validators.required ],
       primary: false
