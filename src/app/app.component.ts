@@ -4,6 +4,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
+import { TranslateService } from 'ng2-translate';
 
 /*
  * App Component
@@ -19,8 +20,7 @@ import { AppState } from './app.service';
 })
 export class App {
 
-  constructor(public appState: AppState) {
-  }
+  constructor(public appState: AppState) {}
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);

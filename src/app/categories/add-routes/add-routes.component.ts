@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../../shared/service/categories.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './add-routes.template.html'
 })
 export class AddRoutesCategories implements OnInit {
-  public categoriesRoutes: any;
+  public categoryRoute: any;
   public error = '';
   public mainSlug = '';
   public routesForm: FormGroup;
@@ -24,39 +24,50 @@ export class AddRoutesCategories implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.getRoutes();
-  }
-  public getRoutes() {
-    this.categoriesService.getCategoriesRoutes(this.routeActiv.snapshot.params['id'])
-      .subscribe(res => {
-        this.categoriesRoutes = res;
+    this.routeActiv.params
+      .switchMap(({ id }) =>
+        Observable.forkJoin([
+          this.categoriesService.getCategoriesRoutes(id),
+          this.categoriesService.getCategoryById(id)
+        ])
+      )
+      .subscribe(([routes, categories]) => {
+        this.categoryRoute = routes;
+        this.mainSlug = categories.slug;
       });
-    this.categoriesService.getCategories(this.routeActiv.snapshot.params['id'])
-      .subscribe(res => {
-        this.mainSlug = res.slug;
-      });
   }
-  public addRoutes() {
+  public getRoutes(id) {
+    Observable.forkJoin([
+      this.categoriesService.getCategoriesRoutes(id),
+      this.categoriesService.getCategoryById(id)
+    ]).subscribe(([routes, categories]) => {
+      this.categoryRoute = routes;
+      this.mainSlug = categories.slug;
+    });
+  }
+  public addRoute() {
     if (!this.routesForm.valid) return;
+    let form = this.routesForm.value;
+    let id = this.routeActiv.snapshot.params['id'];
+    let body = { slug: form.slug };
     this.error = '';
-    this.categoriesService
-      .addCategoriesRoutesPost(this.routesForm.value, this.routeActiv.snapshot.params['id'])
-      .subscribe(res => {
-        if (this.routesForm.value.primary) {
-          this.setPrimary(
-            this.routesForm.value.slug
-          );
-          return;
-        }
-      }, error => {
+    let obs = this.categoriesService.addCategoriesRoutesPost(form, id);
+    if (this.routesForm.value.primary) {
+      obs = obs.flatMap(() => this.categoriesService
+        .editCategory(body, id)
+      );
+    }
+    obs.subscribe(
+      () => this.getRoutes(id),
+      error => {
         this.error = error.json().message;
         if (!!error) return;
       });
-    this.getRoutes();
+    this.routesForm.reset();
   }
   public setPrimary(slug) {
     this.categoriesService
-      .setCategoriesRoutesPut(slug, this.routeActiv.snapshot.params['id'])
-      .subscribe(res => this.getRoutes());
+      .editCategory({slug: slug}, this.routeActiv.snapshot.params['id'])
+      .subscribe(res => this.getRoutes(this.routeActiv.snapshot.params['id']));
   }
 }

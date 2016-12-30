@@ -9,16 +9,25 @@
             <th>{{"id" | translate}}</th>
             <th>{{"name" | translate}}</th>
             <th>{{"edit" | translate}} {{button | translate}}</th>
+            <th>{{"routes_title" | translate}} {{button | translate}}</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let item of categories;">
             <td>{{item.id}}</td>
-            <td><a [routerLink] = " ['../',item.parents[0]]">{{item.name}}</a></td>
+            <td><a [routerLink] = " ['../',item.id]">{{item.name}}</a></td>
             <td>
-              <button class="btn btn-success" disabled>
-                <i class="fa fa-pencil"></i>
-                {{"edit" | translate}}
+              <button class="btn btn-success"
+                [routerLink] = " ['../edit', item.id]">
+                  <i class="fa fa-pencil"></i>
+                  {{"edit" | translate}}
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-success"
+                [routerLink] = " ['../routes', item.id]">
+                <i class="fa fa-share-alt"></i>
+                {{"route" | translate}}
               </button>
             </td>
           </tr>

@@ -39,8 +39,15 @@
             {{"routes_title" | translate}}
           </a>
         </li>
+        <li>
+          <a [routerLink]=" ['categories/create'] ">
+            {{"create" | translate}}
+          </a>
+        </li>
       </ul>
     </li>
+  </ul>
+  <ul class="sidebar-nav" data-parent="#sidebar">
     <li>
       <a class="collapsed" data-target="#sidebar-products" data-toggle="collapse">
        <span class="icon">
@@ -62,6 +69,8 @@
         </li>
       </ul>
     </li>
+  </ul>
+  <ul class="sidebar-nav" data-parent="#sidebar">
     <li>
       <a class="collapsed" data-target="#sidebar-attributes" data-toggle="collapse">
        <span class="icon">
@@ -94,6 +103,11 @@
         <li>
           <a [routerLink]=" ['attributes','flavour'] ">
             {{"flavour_title" | translate}}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]=" ['categories/create'] ">
+            {{"create" | translate}}
           </a>
         </li>
       </ul>

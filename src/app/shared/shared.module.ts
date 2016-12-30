@@ -26,9 +26,7 @@ import { AttributesService } from './service/attributes.service';
 })
 
 export class SharedModule {
-
   static translate;
-
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
@@ -39,8 +37,7 @@ export class SharedModule {
       ]
     };
   }
-
-  constructor (translate: TranslateService) {
+  constructor(translate: TranslateService ) {
     translate.setDefaultLang('en');
     translate.use('en');
     SharedModule.translate = translate;

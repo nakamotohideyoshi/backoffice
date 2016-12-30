@@ -12,7 +12,7 @@ export class CategoriesService {
     let headers = new Headers({'Authorization': token, 'Content-Type': 'application/json'});
     return new RequestOptions({headers: headers});
   }
-  public getCategories(id?) {
+  public getCategoryById(id?) {
     if (!id) id = 0;
     return this.http.get( `${this.catUrl}categories/${id}`, this.requestOptions() )
       .map(res => res.json());
@@ -34,13 +34,18 @@ export class CategoriesService {
       this.requestOptions() )
       .map(res => res.json());
   }
-  public setCategoriesRoutesPut(slug, id?) {
+  public editCategory(body, id?) {
     if (!id) id = 0;
-    return this.http.put(
-      `${this.catUrl}categories/${id}`,
-      { slug: slug },
-      this.requestOptions()
-    ).map(res => res.json());
+    return this.http.put(`${this.catUrl}categories/${id}`, body, this.requestOptions())
+      .map(res => res.json());
+  }
+  public getCategories() {
+    return this.http.get(`${this.catUrl}categories`, this.requestOptions())
+      .map(res => res.json());
+  }
+  public createCategory(body) {
+    return this.http.post(`${this.catUrl}categories`, body, this.requestOptions())
+      .map(res => res.json());
   }
 }
 

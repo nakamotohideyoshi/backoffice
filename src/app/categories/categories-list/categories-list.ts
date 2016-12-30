@@ -13,11 +13,9 @@ export class CategoriesList implements OnInit {
   constructor(private catService: CategoriesService,
               private routeActiv: ActivatedRoute) {}
   ngOnInit(): void {
-    this.catService.getCategoriesSubcategories(
-      this.routeActiv.snapshot.params['id']
-    ).subscribe(res => {
-      this.categories = res.categories;
-    });
+    this.routeActiv.params
+    .switchMap(({id}) => this.catService.getCategoriesSubcategories(id))
+    .subscribe(res => { this.categories = res.categories; });
   }
 }
 

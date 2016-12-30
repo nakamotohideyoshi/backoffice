@@ -1,0 +1,161 @@
+<div class="container">
+  <div class="col-lg-8">
+    <h1 class="page-title">{{"categories_title" | translate}} -
+      <span *ngIf="!editData" class="fw-semi-bold">{{"create" | translate}}</span>
+      <span *ngIf="editData" class="fw-semi-bold">{{"update" | translate}}</span>
+    </h1>
+    <section class="widget">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-wizard">
+            <ul class="nav-justified mb-sm nav nav-pills">
+              <li class="nav-item" [ngClass]="{'active': stepForm == 1, 'done': stepForm > 1}">
+                <a class="nav-link" data-toggle="tab">
+                  <small>1.</small>{{"page_info" | translate}}
+                </a>
+              </li>
+              <li class="nav-item" [ngClass]="{'active': stepForm == 2, 'done': stepForm > 2}">
+                <a class="nav-link"  data-toggle="tab">
+                  <small>2.</small>{{"slug"|translate}}
+                </a>
+              </li>
+              <li class="nav-item" [ngClass]="{'active': stepForm == 3}">
+                <a class="nav-link"  data-toggle="tab">
+                  <small>3.</small>{{"success" | translate}}
+                </a>
+              </li>
+            </ul>
+            <div class="bg-gray-lighter progress-bar mt-xs">
+              <progress id="bar"
+                        class="progress progress-xs progress-bar-gray-light"
+                        value="100"
+                        max="100"
+                        [ngStyle]="{width: getProgress()}">
+              </progress>
+            </div>
+            <div class="tab-content">
+              <div class="tab-pane bg-gray-lighter" *ngIf="stepForm == 1">
+                <form novalidate="novalidate" [formGroup]="pageInfoForm">
+                  <fieldset>
+                    <div class="form-group">
+                      <label for="name">{{"Name" | translate}}</label>
+                      <input type="text" id="name"
+                             placeholder="Category name"
+                             class="form-control"
+                             [ngClass]="pageInfoForm.controls.name.errors? 'parsley-error': ''"
+                             formControlName="name">
+                      <ul *ngIf="pageInfoForm.controls.name.errors" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label>{{"Description" | translate}}</label>
+                      <ckeditor formControlName="description"></ckeditor>
+                      <ul *ngIf="pageInfoForm.controls.description.errors" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label>{{"Title" | translate}}</label>
+                      <input type="text" id="title"
+                             placeholder="Page title"
+                             class="form-control"
+                             [ngClass]="pageInfoForm.controls.title.errors? 'parsley-error': ''"
+                             formControlName="title">
+                      <ul *ngIf="pageInfoForm.controls.title.errors" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label>{{"meta_description" | translate}}</label>
+                      <input type="text" id="meta_description"
+                             placeholder="The meta description"
+                             class="form-control"
+                             [ngClass]="pageInfoForm.controls.meta_description.errors? 'parsley-error': ''"
+                             formControlName="meta_description">
+                      <ul *ngIf="pageInfoForm.controls.meta_description.errors" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label>{{"meta_keywords" | translate}}</label>
+                      <input type="text" id="meta_keywords"
+                             placeholder="cool,stuff"
+                             class="form-control"
+                             [ngClass]="pageInfoForm.controls.meta_keywords.errors? 'parsley-error': ''"
+                             formControlName="meta_keywords">
+                      <ul *ngIf="pageInfoForm.controls.meta_keywords.errors" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label>{{"parents" | translate}}</label>
+                      <select multiple class="form-control"
+                              id="parents"
+                              [ngClass]="pageInfoForm.controls.parents.errors? 'parsley-error': ''"
+                              formControlName="parents">
+                        <option *ngFor="let parent of parentsArray;"
+                                [value] = "parent">{{parent}}
+                        </option>
+                      </select>
+                      <ul *ngIf="pageInfoForm.controls.parents.errors" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label>{{"heading" | translate}}</label>
+                      <input type="text" id="heading"
+                             placeholder="Text"
+                             class="form-control"
+                             [ngClass]="pageInfoForm.controls.heading.errors? 'parsley-error': ''"
+                             formControlName="heading">
+                      <ul *ngIf="pageInfoForm.controls.heading.errors" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+
+                  </fieldset>
+                </form>
+              </div>
+              <div class="tab-pane bg-gray-lighter" *ngIf="stepForm == 2">
+                <form novalidate="novalidate" [formGroup]="slugForm">
+                  <fieldset>
+                    <div class="form-group">
+                      <label>{{"slug" | translate}}</label>
+                      <input type="text" id="slug"
+                             placeholder="foo/bar"
+                             class="form-control"
+                             [ngClass]="slugForm.controls.slug.errors? 'parsley-error': ''"
+                             formControlName="slug">
+                      <ul *ngIf="slugForm.controls.slug.errors" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+              <div class="tab-pane bg-gray-lighter" *ngIf="stepForm == 3">
+                <h2 class="m-t-1">{{"thank_you" | translate}}!</h2>
+
+                <p>{{"success_text" | translate}}</p>
+              </div>
+
+              <ul class="pager wizard">
+                <li *ngIf="stepForm != 1" class="previous">
+                  <button class="btn btn-default btn-rounded pull-left" (click)="previous()">
+                    <i class="fa fa-caret-left"></i> &nbsp; {{"previous" | translate}}
+                  </button>
+                </li>
+                <li *ngIf="stepForm != 3" class="next">
+                  <button class="btn btn-primary btn-rounded pull-right" (click)="next()" >
+                    {{"next" | translate}} &nbsp; <i class="fa fa-caret-right"></i></button>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
