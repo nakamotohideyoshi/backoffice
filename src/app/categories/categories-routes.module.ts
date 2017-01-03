@@ -1,7 +1,6 @@
 import { Routes, RouterModule }  from '@angular/router';
 import { CategoriesComponent } from './categories.component';
 import { NgModule } from '@angular/core/src/metadata/ng_module';
-import { AddRoutesCategories } from './add-routes/add-routes.component';
 import { CategoriesList } from './categories-list/categories-list';
 import { CreateCategories } from './create-categories/create-categories.component';
 import { CategoriesResolve } from './create-categories/categories-parents.resolve';
@@ -20,8 +19,6 @@ const routes: Routes = [
       resolve: { parents: CategoriesResolve, categories: GetCategoriesResolve }
     },
     { path: 'create', component: CreateCategories, resolve: { parents: CategoriesResolve } },
-    { path: 'routes', redirectTo: 'routes/0', component: AddRoutesCategories },
-    { path: 'routes/:id', component: AddRoutesCategories },
     { path: ':id', component: CategoriesList, pathMatch: 'full' }
   ]}
 ];
@@ -38,6 +35,5 @@ export class CategoriesRoutingModule {
 export const routingComponents = [
   CategoriesComponent,
   CategoriesList,
-  AddRoutesCategories,
   CreateCategories
 ];

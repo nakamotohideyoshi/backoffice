@@ -9,7 +9,6 @@
             <th>{{"id" | translate}}</th>
             <th>{{"name" | translate}}</th>
             <th>{{"edit" | translate}} {{button | translate}}</th>
-            <th>{{"routes_title" | translate}} {{button | translate}}</th>
           </tr>
           </thead>
           <tbody>
@@ -21,13 +20,6 @@
                 [routerLink] = " ['../edit', item.id]">
                   <i class="fa fa-pencil"></i>
                   {{"edit" | translate}}
-              </button>
-            </td>
-            <td>
-              <button class="btn btn-success"
-                [routerLink] = " ['../routes', item.id]">
-                <i class="fa fa-share-alt"></i>
-                {{"route" | translate}}
               </button>
             </td>
           </tr>

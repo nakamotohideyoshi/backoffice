@@ -1,40 +1,15 @@
 <div class="container">
-  <div class="col-lg-8">
-    <h1 class="page-title">{{"categories_title" | translate}} -
-      <span *ngIf="!editData" class="fw-semi-bold">{{"create" | translate}}</span>
-      <span *ngIf="editData" class="fw-semi-bold">{{"update" | translate}}</span>
-    </h1>
-    <section class="widget">
+  <div class="row">
+    <div class="col-lg-8">
       <div class="row">
-        <div class="col-lg-12">
+      <h1 class="page-title">{{"categories_title" | translate}} -
+        <span *ngIf="!editData" class="fw-semi-bold">{{"create" | translate}}</span>
+        <span *ngIf="editData" class="fw-semi-bold">{{"update" | translate}}</span>
+      </h1>
+        <div class="widget col-lg-12">
           <div class="form-wizard">
-            <ul class="nav-justified mb-sm nav nav-pills">
-              <li class="nav-item" [ngClass]="{'active': stepForm == 1, 'done': stepForm > 1}">
-                <a class="nav-link" data-toggle="tab">
-                  <small>1.</small>{{"page_info" | translate}}
-                </a>
-              </li>
-              <li class="nav-item" [ngClass]="{'active': stepForm == 2, 'done': stepForm > 2}">
-                <a class="nav-link"  data-toggle="tab">
-                  <small>2.</small>{{"slug"|translate}}
-                </a>
-              </li>
-              <li class="nav-item" [ngClass]="{'active': stepForm == 3}">
-                <a class="nav-link"  data-toggle="tab">
-                  <small>3.</small>{{"success" | translate}}
-                </a>
-              </li>
-            </ul>
-            <div class="bg-gray-lighter progress-bar mt-xs">
-              <progress id="bar"
-                        class="progress progress-xs progress-bar-gray-light"
-                        value="100"
-                        max="100"
-                        [ngStyle]="{width: getProgress()}">
-              </progress>
-            </div>
             <div class="tab-content">
-              <div class="tab-pane bg-gray-lighter" *ngIf="stepForm == 1">
+              <div class="tab-pane bg-gray-lighter">
                 <form novalidate="novalidate" [formGroup]="pageInfoForm">
                   <fieldset>
                     <div class="form-group">
@@ -95,7 +70,7 @@
                               [ngClass]="pageInfoForm.controls.parents.errors? 'parsley-error': ''"
                               formControlName="parents">
                         <option *ngFor="let parent of parentsArray;"
-                                [value] = "parent">{{parent}}
+                                [value] = "parent.id">{{parent.name}}
                         </option>
                       </select>
                       <ul *ngIf="pageInfoForm.controls.parents.errors" class="parsley-errors-list filled">
@@ -113,42 +88,36 @@
                         <li class="parsley-required">{{"form_error_required" | translate}}</li>
                       </ul>
                     </div>
-
-                  </fieldset>
-                </form>
-              </div>
-              <div class="tab-pane bg-gray-lighter" *ngIf="stepForm == 2">
-                <form novalidate="novalidate" [formGroup]="slugForm">
-                  <fieldset>
                     <div class="form-group">
                       <label>{{"slug" | translate}}</label>
                       <input type="text" id="slug"
                              placeholder="foo/bar"
                              class="form-control"
-                             [ngClass]="slugForm.controls.slug.errors? 'parsley-error': ''"
+                             [ngClass]="pageInfoForm.controls.slug.errors || errorForm? 'parsley-error': ''"
                              formControlName="slug">
-                      <ul *ngIf="slugForm.controls.slug.errors" class="parsley-errors-list filled">
-                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      <ul *ngIf="pageInfoForm.controls.slug.errors || errorForm" class="parsley-errors-list filled">
+                        <li *ngIf="pageInfoForm.controls.slug.errors"
+                            class="parsley-required">{{"form_error_required" | translate}}
+                        </li>
+                        <li *ngIf="errorForm" class="parsley-required">{{errorForm}}</li>
                       </ul>
                     </div>
                   </fieldset>
                 </form>
               </div>
-              <div class="tab-pane bg-gray-lighter" *ngIf="stepForm == 3">
-                <h2 class="m-t-1">{{"thank_you" | translate}}!</h2>
-
-                <p>{{"success_text" | translate}}</p>
-              </div>
 
               <ul class="pager wizard">
-                <li *ngIf="stepForm != 1" class="previous">
-                  <button class="btn btn-default btn-rounded pull-left" (click)="previous()">
-                    <i class="fa fa-caret-left"></i> &nbsp; {{"previous" | translate}}
+                <li>
+                  <button *ngIf="!editData"
+                          class="btn btn-primary btn-rounded pull-right"
+                          (click)="create()"
+                          [disabled]="!pageInfoForm.valid">{{"create" | translate}}
                   </button>
-                </li>
-                <li *ngIf="stepForm != 3" class="next">
-                  <button class="btn btn-primary btn-rounded pull-right" (click)="next()" >
-                    {{"next" | translate}} &nbsp; <i class="fa fa-caret-right"></i></button>
+                  <button *ngIf="editData"
+                          class="btn btn-primary btn-rounded pull-right"
+                          (click)="update()"
+                          [disabled]="!pageInfoForm.valid">{{"update" | translate}}
+                  </button>
                 </li>
               </ul>
 
@@ -156,6 +125,70 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</div>
+
+<!-- routes -->
+<div *ngIf="editData" class="container">
+  <div class="row">
+    <h1 class="page-title">
+      {{"categories_title" | translate}} -
+      <span class="fw-semi-bold">
+        {{"routes_title" | translate}}
+      </span>
+    </h1>
+    <div class="col-lg-12">
+      <div class="row h-background-color-white">
+        <table class="table table-bordered categories-table">
+          <thead>
+          <tr>
+            <th>{{"slug" | translate}}</th>
+            <th>{{"id" | translate}}</th>
+            <th>{{"primary" | translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of categoryRoute; let key = index;">
+            <td>{{item.slug}}</td>
+            <td>{{item.id}}</td>
+            <td>
+              <input type="radio"
+                     name="primary"
+                     [checked]="item.slug == mainSlug"
+                     (change)="setPrimary(item.slug)"
+                     value="key">
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="route-form">
+          <form [formGroup]="routesForm" class="form-horizontal">
+            <div class="form-group">
+              <label class="control-label">{{"slug" | translate}}</label>
+              <p *ngIf="!!error" class="error">{{error}}</p>
+              <input type="text"
+                     formControlName="slug"
+                     class="form-control"
+                     placeholder="foo/bar">
+            </div>
+            <div class="form-group abc-checkbox abc-checkbox-success">
+              <input type="checkbox" formControlName="primary" id="primaryCheckbox">
+              <label for="primaryCheckbox">{{"primary" | translate}}</label>
+            </div>
+            <button class="btn btn-success"
+                    (click)="addRoute()"
+                    [disabled]="!routesForm.valid">
+              <i class="fa fa-plus"></i>
+              {{"add" | translate}} {{"route" | translate}}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
