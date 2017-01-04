@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <h1 class="page-title">
+      {{"providers_title" | translate}} -
+      <span class="fw-semi-bold">
+        {{"list_title" | translate}}
+      </span>
+    </h1>
+    <div class="col-lg-12">
+      <div class="row h-background-color-white">
+        <table class="table table-bordered providers-table">
+          <thead>
+          <tr>
+            <th>{{"id" | translate}}</th>
+            <th>{{"name" | translate}}</th>
+            <th>{{"order_email" | translate}}</th>
+            <th>{{"phone" | translate}}</th>
+            <th>{{"edit" | translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let provider of providers;">
+            <td>{{provider.id}}</td>
+            <td>{{provider.name}}</td>
+            <td>{{provider.order_email}}</td>
+            <td>{{provider.phone}}</td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

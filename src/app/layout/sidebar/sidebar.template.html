@@ -67,6 +67,24 @@
   </ul>
   <ul class="sidebar-nav" data-parent="#sidebar">
     <li>
+      <a class="collapsed" data-target="#sidebar-providers" data-toggle="collapse">
+       <span class="icon">
+           <i class="fa fa-table"></i>
+       </span>
+        {{"providers_title" | translate}}
+        <i class="toggle fa fa-angle-down"></i>
+      </a>
+      <ul class="collapse" id="sidebar-providers">
+        <li>
+          <a [routerLink]=" ['providers','list'] ">
+            {{"list_title" | translate}}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="sidebar-nav" data-parent="#sidebar">
+    <li>
       <a class="collapsed" data-target="#sidebar-attributes" data-toggle="collapse">
        <span class="icon">
            <i class="fa fa-table"></i>
