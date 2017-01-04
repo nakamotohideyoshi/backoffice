@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule }  from '@angular/forms';
 import { SharedModule }  from '../shared/shared.module';
 
 import { ProvidersRoutingModule, providersComponents } from './providers.routes.module';
-
+import { GetProviderResolve } from './create-provider/get-provider.resolve';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { ProvidersRoutingModule, providersComponents } from './providers.routes.
     SharedModule
   ],
   declarations: [providersComponents],
-  providers: []
+  providers: [GetProviderResolve]
 })
 export default class ProvidersModule {
 

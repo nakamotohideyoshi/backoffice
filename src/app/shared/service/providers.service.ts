@@ -20,4 +20,16 @@ export class ProvidersService {
     return this.http.get(`${this.apiUrl}providers`, this.requestOptions())
       .map(res => res.json());
   }
+
+  public getProviderById(id?) {
+    if (!id) id = 0;
+    return this.http.get( `${this.apiUrl}providers/${id}`, this.requestOptions() )
+      .map(res => res.json());
+  }
+
+  public updateProvider(body, id?) {
+    if (!id) id = 0;
+    return this.http.put(`${this.apiUrl}providers/${id}`, body, this.requestOptions())
+      .map(res => res.json());
+  }
 }

@@ -24,7 +24,13 @@
             <td>{{provider.name}}</td>
             <td>{{provider.order_email}}</td>
             <td>{{provider.phone}}</td>
-            <td></td>
+            <td>
+              <button class="btn btn-success"
+                [routerLink] = " ['../edit', provider.id]">
+                  <i class="fa fa-pencil"></i>
+                  {{"edit" | translate}}
+              </button>
+            </td>
           </tr>
           </tbody>
         </table>

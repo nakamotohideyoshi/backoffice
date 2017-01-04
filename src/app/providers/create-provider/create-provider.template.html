@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <h1 class="page-title">{{"providers_title" | translate}} -
+          <span *ngIf="!providerData" class="fw-semi-bold">{{"create" | translate}}</span>
+          <span *ngIf="providerData" class="fw-semi-bold">{{"update" | translate}}</span>
+        </h1>
+        <div class="widget col-lg-12">
+          <div class="form-wizard">
+            <div class="tab-content">
+              <div class="tab-pane bg-gray-lighter">
+                <form novalidate="novalidate" [formGroup]="editForm">
+                  <fieldset>
+                    <div class="form-group">
+                      <label for="name">{{"Name" | translate}}</label>
+                      <input type="text" id="name"
+                             placeholder="provider name"
+                             class="form-control"
+                             [ngClass]="editForm.controls.name.errors && !editForm.controls.name.pristine? 'parsley-error': ''"
+                             formControlName="name">
+                      <ul *ngIf="editForm.controls.name.errors && !editForm.controls.name.pristine" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label for="name">{{"order_email" | translate}}</label>
+                      <input type="text" id="order_email"
+                             placeholder="Order email"
+                             class="form-control"
+                             [ngClass]="editForm.controls.order_email.errors && !editForm.controls.order_email.pristine? 'parsley-error': ''"
+                             formControlName="order_email">
+                      <ul *ngIf="editForm.controls.order_email.errors && !editForm.controls.order_email.pristine" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label for="name">{{"contact_email" | translate}}</label>
+                      <input type="text" id="contact_email"
+                             placeholder="Contact email"
+                             class="form-control"
+                             [ngClass]="editForm.controls.contact_email.errors && !editForm.controls.contact_email.pristine? 'parsley-error': ''"
+                             formControlName="contact_email">
+                      <ul *ngIf="editForm.controls.contact_email.errors && !editForm.controls.contact_email.pristine" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label for="name">{{"phone" | translate}}</label>
+                      <input type="text" id="phone"
+                             placeholder="Phone"
+                             class="form-control"
+                             [ngClass]="editForm.controls.phone.errors && !editForm.controls.phone.pristine? 'parsley-error': ''"
+                             formControlName="phone">
+                      <ul *ngIf="editForm.controls.phone.errors && !editForm.controls.phone.pristine" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label for="name">{{"website" | translate}}</label>
+                      <input type="text" id="website"
+                             placeholder="Website"
+                             class="form-control"
+                             [ngClass]="editForm.controls.website.errors && !editForm.controls.website.pristine? 'parsley-error': ''"
+                             formControlName="website">
+                      <ul *ngIf="editForm.controls.website.errors && !editForm.controls.website.pristine" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+              <ul class="pager wizard">
+                <li>
+                  <button *ngIf="!providerData"
+                          class="btn btn-primary btn-rounded pull-right"
+                          (click)="create()"
+                          [disabled]="!editForm.valid">{{"create" | translate}}
+                  </button>
+                  <button *ngIf="providerData"
+                          class="btn btn-primary btn-rounded pull-right"
+                          (click)="update()"
+                          [disabled]="!editForm.valid">{{"update" | translate}}
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
