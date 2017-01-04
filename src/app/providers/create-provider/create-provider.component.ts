@@ -25,26 +25,36 @@ export class CreateProvider implements OnInit {
       this.editForm = this.formBuilder.group({
         name: ['', Validators.required],
         order_email: ['', Validators.required],
-        contact_email: ['', Validators.required],
-        phone: ['', Validators.required],
-        website: ['', Validators.required]
+        contact_email: [''],
+        phone: [''],
+        website: ['']
       });
     } else {
       this.editForm = this.formBuilder.group({
         name: [this.providerData.name, Validators.required],
         order_email: [this.providerData.order_email, Validators.required],
-        contact_email: [this.providerData.contact_email, Validators.required],
-        phone: [this.providerData.phone, Validators.required],
-        website: [this.providerData.website, Validators.required]
+        contact_email: [this.providerData.contact_email],
+        phone: [this.providerData.phone],
+        website: [this.providerData.website]
       });
     }
+  }
+
+  public create() {
+    if (!this.editForm.valid) return;
+
+    this.providerService.createProvider(this.editForm.value)
+      .subscribe( () => console.log("Created!"),
+        error => {
+          console.log(error);
+      });
   }
 
   public update() {
     if (!this.editForm.valid) return;
 
     this.providerService.updateProvider(this.editForm.value, this.providerData.id)
-      .subscribe( () => alert("done!"));
+      .subscribe( () => console.log("Updated!"));
 
   }
 }

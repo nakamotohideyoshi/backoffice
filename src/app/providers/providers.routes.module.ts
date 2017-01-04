@@ -17,6 +17,7 @@ const routes: Routes = [
       component: CreateProvider,
       resolve: { provider: GetProviderResolve }
     },
+    { path: 'new', component: CreateProvider }
   ]
   }
 ];

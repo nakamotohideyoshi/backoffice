@@ -32,4 +32,9 @@ export class ProvidersService {
     return this.http.put(`${this.apiUrl}providers/${id}`, body, this.requestOptions())
       .map(res => res.json());
   }
+
+  public createProvider(body) {
+    return this.http.post(`${this.apiUrl}providers`, body, this.requestOptions())
+      .map(res => res.json());
+  }
 }
