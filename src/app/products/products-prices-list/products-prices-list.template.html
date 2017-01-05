@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <h1 class="page-title">
+      {{"products_title" | translate}} -
+      <span class="fw-semi-bold">
+        {{"price_title" | translate}}
+      </span>
+    </h1>
+    <div class="col-lg-12">
+      <div class="row h-background-color-white">
+        <table class="table table-bordered prices-table">
+          <thead>
+          <tr>
+            <th>{{"color_title" | translate}}</th>
+            <th>{{"size_title" | translate}}</th>
+            <th>{{"clothing_size_title" | translate}}</th>
+            <th>{{"model_title" | translate}}</th>
+            <th>{{"flavour_title" | translate}}</th>
+            <th>{{"name" | translate}}</th>
+            <th>{{"price_title" | translate}}</th>
+            <th>{{"edit" | translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let price of prices;">
+            <td>{{price.color}}</td>
+            <td>{{price.size}}</td>
+            <td>{{price.clothing_size}}</td>
+            <td>{{price.model}}</td>
+            <td>{{price.flavour}}</td>
+            <td>{{price.name}}</td>
+            <td>
+              <table class="table table-bordered prices-table">
+                <thead>
+                <tr>
+                  <th *ngFor="let title of price.titles">{{title}} pcs</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td *ngFor="let value of price.values">{{value}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </td>
+            <td><button class="btn btn-success">
+              <i class="fa fa-pencil"></i>
+              {{"edit" | translate}}
+            </button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

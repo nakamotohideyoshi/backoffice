@@ -13,12 +13,26 @@
           <tr>
             <th>{{"id" | translate}}</th>
             <th>{{"name" | translate}}</th>
+            <th>{{"price_title" | translate}}</th>
+            <th>{{"routes_title" | translate}}</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let item of products;">
             <td>{{item.id}}</td>
             <td>{{item.name}}</td>
+            <td><button class="btn btn-success"
+                        [routerLink] = " ['../prices', item.id]">
+              <i class="fa fa-gbp"></i>
+              {{"price_title" | translate}}
+            </button></td>
+            <td>
+              <button class="btn btn-success"
+                      [routerLink] = " ['../routes', item.id]">
+                <i class="fa fa-random"></i>
+                {{"routes_title" | translate}}
+              </button>
+            </td>
           </tr>
           </tbody>
         </table>

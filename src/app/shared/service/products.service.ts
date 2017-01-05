@@ -40,5 +40,10 @@ export class ProductsService {
     return this.http.get(`${this.apiUrl}products`, this.requestOptions())
       .map(res => res.json());
   }
+
+  public  getProductPrices(id) {
+    return this.http.get(`${this.apiUrl}products/${id}/prices`, this.requestOptions())
+      .map(res => res.json());
+  }
 }
 

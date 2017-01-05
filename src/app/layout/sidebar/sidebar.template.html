@@ -19,11 +19,6 @@
             {{"list_title" | translate}}
           </a>
         </li>
-        <li>
-          <a [routerLink]=" ['categories/routes', 0] ">
-            {{"routes_title" | translate}}
-          </a>
-        </li>
       </ul>
     </li>
   </ul>
@@ -40,11 +35,6 @@
         <li>
           <a [routerLink]=" ['products','list'] ">
             {{"list_title" | translate}}
-          </a>
-        </li>
-        <li>
-          <a [routerLink]=" ['products','routes','iwPy8XA'] ">
-            {{"routes_title" | translate}}
           </a>
         </li>
       </ul>
@@ -125,4 +115,23 @@
     </li>
   </ul>
 
+  <ul class="sidebar-nav" data-parent="#sidebar">
+    <li>
+      <a class="collapsed" data-target="#sidebar-options" data-toggle="collapse">
+        <span class="icon">
+            <i class="fa fa-cog"></i>
+        </span>
+        {{"Options" | translate}}
+        <i class="toggle fa fa-angle-down"></i>
+      </a>
+      <ul class="collapse" id="sidebar-options">
+        <li>
+          <a [routerLink]=" ['options/list'] ">
+            {{"list_title" | translate}}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  
 </div>
