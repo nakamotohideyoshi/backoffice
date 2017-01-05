@@ -2,7 +2,7 @@
   <header class="logo hidden-sm-down">
     <a href="index.html">{{config.name}}</a>
   </header>
-  
+
   <!-- main notification links are placed inside of .sidebar-nav -->
   <ul class="sidebar-nav" data-parent="#sidebar">
     <li>
@@ -70,6 +70,24 @@
   </ul>
   <ul class="sidebar-nav" data-parent="#sidebar">
     <li>
+      <a class="collapsed" data-target="#sidebar-pages" data-toggle="collapse">
+       <span class="icon">
+           <i class="fa fa-table"></i>
+       </span>
+        {{"pages_title" | translate}}
+        <i class="toggle fa fa-angle-down"></i>
+      </a>
+      <ul class="collapse" id="sidebar-pages">
+        <li>
+          <a [routerLink]=" ['pages','list'] ">
+            {{"list_title" | translate}}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="sidebar-nav" data-parent="#sidebar">
+    <li>
       <a class="collapsed" data-target="#sidebar-attributes" data-toggle="collapse">
        <span class="icon">
            <i class="fa fa-table"></i>
@@ -106,5 +124,5 @@
       </ul>
     </li>
   </ul>
-  
+
 </div>

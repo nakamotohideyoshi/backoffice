@@ -26,6 +26,9 @@
   "contact_email": "Contact Email",
   "phone": "Phone",
   "website": "Website",
+  "pages_title": "Pages",
+  "add_new_page": "New Page",
+  "content": "Content",
   "attributes_title": "Attributes",
   "size_title": "Size",
   "color_title": "Color",
@@ -44,5 +47,6 @@
   "success_text": "Your submission has been received.",
   "previous": "Previous",
   "next": "Next",
-  "category": "category"
+  "category": "category",
+  "cancel": "Cancel"
 }

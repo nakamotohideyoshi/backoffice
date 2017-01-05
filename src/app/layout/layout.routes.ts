@@ -10,7 +10,8 @@ const routes: Routes = [
     { path: 'products', loadChildren: () => System.import('../products/products.module') },
     { path: 'providers', loadChildren: () => System.import('../providers/providers.module') },
     { path: 'categories', loadChildren: () => System.import('../categories/categories.module') },
-    { path: 'attributes', loadChildren: () => System.import('../attributes/attributes.module') }
+    { path: 'attributes', loadChildren: () => System.import('../attributes/attributes.module') },
+    { path: 'pages', loadChildren: () => System.import('../pages/pages.module') }
   ]}
 ];
 

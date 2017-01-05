@@ -11,6 +11,7 @@ import { CategoriesService } from './service/categories.service';
 import { ProductsService } from './service/products.service';
 import { ProvidersService } from './service/providers.service';
 import { AttributesService } from './service/attributes.service';
+import { PagesService } from './service/pages.service';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ export class SharedModule {
         CategoriesService,
         ProductsService,
         ProvidersService,
-        AttributesService
+        AttributesService,
+        PagesService
       ]
     };
   }
