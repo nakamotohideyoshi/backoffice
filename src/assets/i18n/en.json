@@ -44,5 +44,10 @@
   "success_text": "Your submission has been received.",
   "previous": "Previous",
   "next": "Next",
-  "category": "category"
+  "category": "category",
+  "options": "Options",
+  "internal_name": "Internal name",
+  "start_cost_name": "Start cost name",
+  "start_cost": "Start cost",
+  "price_mode": "Price mode"
 }

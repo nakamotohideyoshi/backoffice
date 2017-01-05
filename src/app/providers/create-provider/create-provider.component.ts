@@ -44,7 +44,7 @@ export class CreateProvider implements OnInit {
     if (!this.editForm.valid) return;
 
     this.providerService.createProvider(this.editForm.value)
-      .subscribe( () => console.log("Created!"),
+      .subscribe( () => console.log('Created!'),
         error => {
           console.log(error);
       });
@@ -54,7 +54,7 @@ export class CreateProvider implements OnInit {
     if (!this.editForm.valid) return;
 
     this.providerService.updateProvider(this.editForm.value, this.providerData.id)
-      .subscribe( () => console.log("Updated!"));
+      .subscribe( () => console.log('Updated!'));
 
   }
 }

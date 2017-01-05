@@ -44,5 +44,10 @@
   "success_text": "Klart!",
   "previous": "Föregående",
   "next": "Nästa",
-  "category": "kategori"
+  "category": "kategori",
+  "options": "Options",
+  "internal_name": "",
+  "start_cost_name": "",
+  "start_cost": "",
+  "price_mode": ""
 }
