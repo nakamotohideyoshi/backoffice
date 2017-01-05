@@ -49,5 +49,6 @@
   "internal_name": "Internal name",
   "start_cost_name": "Start cost name",
   "start_cost": "Start cost",
-  "price_mode": "Price mode"
+  "price_mode": "Price mode",
+  "price_title": "Price"
 }

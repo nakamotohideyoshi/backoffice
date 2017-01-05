@@ -33,7 +33,7 @@ export class ProductsRoutesComponent implements OnInit {
           this.productsRoutesService.getProduct(id)]))
       .subscribe(([routes, product]) => {
         this.routes = routes;
-        this.primaryRoute = product.slug;
+        if (product) this.primaryRoute = product.slug;
       });
 
 
@@ -45,12 +45,13 @@ export class ProductsRoutesComponent implements OnInit {
       this.productsRoutesService.getProduct(id)])
       .subscribe(([routes, product]) => {
         this.routes = routes;
-        this.primaryRoute = product.slug;
+        if (product) this.primaryRoute = product.slug;
       });
   }
 
   private addRoute() {
 
+    this.error = '';
     let form = this.addRouteForm.value;
     let id = this.activatedRoute.snapshot.params['id'];
     let body = { slug: form.slug };

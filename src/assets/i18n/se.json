@@ -45,9 +45,10 @@
   "previous": "Föregående",
   "next": "Nästa",
   "category": "kategori",
-  "options": "Options",
+  "options": "",
   "internal_name": "",
   "start_cost_name": "",
   "start_cost": "",
-  "price_mode": ""
+  "price_mode": "",
+  "price_title": ""
 }
