@@ -117,6 +117,25 @@
 
   <ul class="sidebar-nav" data-parent="#sidebar">
     <li>
+      <a class="collapsed" data-target="#sidebar-faqs" data-toggle="collapse">
+        <span class="icon">
+            <i class="fa fa-table"></i>
+        </span>
+        {{"faq_posts_title" | translate}}
+        <i class="toggle fa fa-angle-down"></i>
+      </a>
+      <ul class="collapse" id="sidebar-faqs">
+        <li>
+          <a [routerLink]=" ['faqs/list'] ">
+            {{"list_title" | translate}}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  
+  <ul class="sidebar-nav" data-parent="#sidebar">
+    <li>
       <a class="collapsed" data-target="#sidebar-options" data-toggle="collapse">
         <span class="icon">
             <i class="fa fa-cog"></i>
@@ -133,5 +152,7 @@
       </ul>
     </li>
   </ul>
-  
+
+
+
 </div>

@@ -13,6 +13,7 @@ import { ProvidersService } from './service/providers.service';
 import { AttributesService } from './service/attributes.service';
 import { PagesService } from './service/pages.service';
 import { OptionsService } from './service/options.service';
+import { FAQsService } from './service/faqs.service';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ export class SharedModule {
         AttributesService,
         PagesService,
         OptionsService,
+        FAQsService
       ]
     };
   }

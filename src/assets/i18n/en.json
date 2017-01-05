@@ -54,5 +54,7 @@
   "start_cost_name": "Start cost name",
   "start_cost": "Start cost",
   "price_mode": "Price mode",
-  "price_title": "Price"
+  "price_title": "Price",
+  "faq_posts_title": "FAQs",
+  "add_new_faq": "New FAQ"
 }
