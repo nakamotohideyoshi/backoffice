@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h1 class="page-title">
+      {{"pages_title" | translate}} -
+      <span class="fw-semi-bold">
+        {{"list_title" | translate}}
+      </span>
+    </h1>
+    <div class="col-lg-12">
+      <div class="row">
+      <button class="btn btn-success create-button"
+              [routerLink]="['../new']">
+        <i class="fa fa-share-alt"></i>
+        {{"add_new_page" | translate}}
+      </button>
+      </div>
+      <div class="row h-background-color-white">
+        <table class="table table-bordered providers-table">
+          <thead>
+          <tr>
+            <th>{{"id" | translate}}</th>
+            <th>{{"name" | translate}}</th>
+            <th>{{"edit" | translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let page of pages;">
+            <td>{{page.id}}</td>
+            <td>{{page.name}}</td>
+            <td>
+              <button class="btn btn-success"
+                [routerLink] = " ['../edit', page.id]">
+                  <i class="fa fa-pencil"></i>
+                  {{"edit" | translate}}
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

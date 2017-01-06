@@ -11,7 +11,9 @@ const routes: Routes = [
     { path: 'providers', loadChildren: () => System.import('../providers/providers.module') },
     { path: 'categories', loadChildren: () => System.import('../categories/categories.module') },
     { path: 'attributes', loadChildren: () => System.import('../attributes/attributes.module') },
+    { path: 'pages', loadChildren: () => System.import('../pages/pages.module') },
     { path: 'options', loadChildren: () => System.import('../options/options.module') }
+
   ]}
 ];
 

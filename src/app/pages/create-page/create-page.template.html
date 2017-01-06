@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <h1 class="page-title">{{"pages_title" | translate}} -
+          <span *ngIf="!providerData" class="fw-semi-bold">{{"create" | translate}}</span>
+          <span *ngIf="providerData" class="fw-semi-bold">{{"update" | translate}}</span>
+        </h1>
+        <div class="widget col-lg-12">
+          <div class="form-wizard">
+            <div class="tab-content">
+              <div class="tab-pane bg-gray-lighter">
+                <form novalidate="novalidate" [formGroup]="editForm">
+                  <fieldset>
+                    <div class="form-group">
+                      <label for="name">{{"Name" | translate}}</label>
+                      <input type="text" id="name"
+                             placeholder="provider name"
+                             class="form-control"
+                             [ngClass]="editForm.controls.name.errors && !editForm.controls.name.pristine? 'parsley-error': ''"
+                             formControlName="name">
+                      <ul *ngIf="editForm.controls.name.errors && !editForm.controls.name.pristine" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                    <div class="form-group">
+                      <label>{{"content" | translate}}</label>
+                      <ckeditor formControlName="content"></ckeditor>
+                      <ul *ngIf="editForm.controls.content.errors && !editForm.controls.content.pristine" class="parsley-errors-list filled">
+                        <li class="parsley-required">{{"form_error_required" | translate}}</li>
+                      </ul>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+              <ul class="pager wizard">
+                <li>
+                  <button *ngIf="!pageData"
+                          class="btn btn-primary btn-rounded pull-right"
+                          (click)="create()"
+                          [disabled]="!editForm.valid">{{"create" | translate}}
+                  </button>
+                  <button *ngIf="pageData"
+                          class="btn btn-primary btn-rounded pull-right"
+                          (click)="update()"
+                          [disabled]="!editForm.valid">{{"update" | translate}}
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
