@@ -1,0 +1,320 @@
+<div class="container product-create">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <h1 class="page-title">{{"product" | translate}} -
+          <span class="fw-semi-bold">{{"create" | translate}}</span>
+        </h1>
+        <div class="col-lg-12 widget">
+          <form [formGroup]="productForm">
+            <fieldset>
+              <div class="form-group">
+                <label for="name">{{"Name" | translate}}</label>
+                <input type="text" id="name"
+                       placeholder="Product name"
+                       class="form-control"
+                       [ngClass]="getError(productForm, 'name')? 'parsley-error': ''"
+                       formControlName="name">
+                <ul *ngIf="productForm.controls.name.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.name.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                  <li *ngIf="productForm.value.name.length > 60"
+                      class="parsley-required">
+                    {{"form_error_length" | translate}} 60!
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="name">{{"sku" | translate}}</label>
+                <input type="text" id="sku"
+                       placeholder="P-123"
+                       class="form-control"
+                       [ngClass]="getError(productForm, 'sku')? 'parsley-error': ''"
+                       formControlName="sku">
+                <ul *ngIf="productForm.controls.sku.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.sku.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                  <li *ngIf="productForm.value.sku.length > 20"
+                      class="parsley-required">
+                    {{"form_error_length" | translate}} 20!
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group" *ngIf="providerIdArray.length">
+                <label for="name">{{"provider_id" | translate}}</label>
+                <ng-select
+                    [options]="providerIdArray"
+                    placeholder="Select id"
+                    [allowClear]="true"
+                    theme="default"
+                    [ngClass]="getError(productForm, 'provider_id')? 'parsley-error': ''"
+                    formControlName="provider_id">
+                </ng-select>
+                <ul *ngIf="productForm.controls.provider_id.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.provider_id.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label>{{"Description" | translate}}</label>
+                <ckeditor formControlName="description"></ckeditor>
+                <ul *ngIf="productForm.controls.description.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.description.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group" *ngIf="unitArray.length">
+                <label>{{"unit" | translate}}</label>
+                <ng-select
+                    [options]="unitArray"
+                    placeholder="Select unit"
+                    [allowClear]="true"
+                    theme="default"
+                    [ngClass]="getError(productForm, 'unit')? 'parsley-error': ''"
+                    formControlName="unit">
+                </ng-select>
+                <ul *ngIf="productForm.controls.unit.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.unit.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group" *ngIf="optionIdArray.length">
+                <label>{{"printing_option_id" | translate}}</label>
+                <ng-select
+                    [options]="optionIdArray"
+                    placeholder="Select printing option"
+                    [allowClear]="true"
+                    theme="default"
+                    [ngClass]="getError(productForm, 'printing_option_id')? 'parsley-error': ''"
+                    formControlName="printing_option_id">
+                </ng-select>
+                <ul *ngIf="productForm.controls.printing_option_id.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.printing_option_id.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group" *ngIf="statusArray.length">
+                <label>{{"status" | translate}}</label>
+                <ng-select
+                    [options]="statusArray"
+                    placeholder="Select status"
+                    [allowClear]="true"
+                    theme="default"
+                    [ngClass]="getError(productForm, 'status')? 'parsley-error': ''"
+                    formControlName="status">
+                </ng-select>
+                <ul *ngIf="productForm.controls.status.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.status.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="slug">{{"slug" | translate}}</label>
+                <input type="text" id="slug"
+                       placeholder="foo/bar/product-name"
+                       class="form-control"
+                       [ngClass]="getError(productForm, 'slug')? 'parsley-error': ''"
+                       formControlName="slug">
+                <ul *ngIf="productForm.controls.slug.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.slug.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label>
+                  {{"imprint_included" | translate}}
+                </label>
+                <div class="switch">
+                  <label for="imprint_included">
+                    <input type="checkbox"
+                           class="ios"
+                           [checked]="productForm.value.imprint_included"
+                           formControlName="imprint_included"
+                           id="imprint_included"><i></i>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>
+                  {{"sell_without_imprint" | translate}}
+                </label>
+                <div class="switch">
+                  <label for="sell_without_imprint">
+                    <input type="checkbox"
+                           class="ios"
+                           [checked]="productForm.value.sell_without_imprint"
+                           formControlName="sell_without_imprint"
+                           id="sell_without_imprint"><i></i>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="sort">{{"sort" | translate}}</label>
+                <input type="text" id="sort"
+                       placeholder="sort"
+                       class="form-control"
+                       disabled
+                       [ngClass]="getError(productForm, 'sort')? 'parsley-error': ''"
+                       formControlName="sort">
+                <ul *ngIf="productForm.controls.sort.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.sort.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group" *ngIf="categoriesArray.length">
+                <label>{{"categories_title" | translate}}</label>
+                <ng-select
+                    [options]="categoriesArray"
+                    placeholder="Select categories"
+                    multiple="true"
+                    [allowClear]="true"
+                    theme="default"
+                    [ngClass]="getError(productForm, 'categories')? 'parsley-error': ''"
+                    formControlName="categories">
+                </ng-select>
+                <ul *ngIf="productForm.controls.categories.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.categories.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group" *ngIf="colorsArray.length">
+                <label>{{"colors" | translate}}</label>
+                <ng-select
+                    [options]="colorsArray"
+                    placeholder="Select colors"
+                    multiple="true"
+                    [allowClear]="true"
+                    theme="default"
+                    [ngClass]="getError(productForm, 'colors')? 'parsley-error': ''"
+                    formControlName="colors">
+                </ng-select>
+                <ul *ngIf="productForm.controls.colors.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.colors.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group" *ngIf="clothingSizesArray.length">
+                <label>{{"clothing_sizes" | translate}}</label>
+                <ng-select
+                    [options]="clothingSizesArray"
+                    placeholder="Select clothing sizes"
+                    multiple="true"
+                    [allowClear]="true"
+                    theme="default"
+                    [ngClass]="getError(productForm, 'clothing_sizes')? 'parsley-error': ''"
+                    formControlName="clothing_sizes">
+                </ng-select>
+                <ul *ngIf="productForm.controls.clothing_sizes.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.clothing_sizes.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group" *ngIf="sizesArray.length">
+                <label>{{"sizes" | translate}}</label>
+                <ng-select
+                    [options]="sizesArray"
+                    placeholder="Select sizes"
+                    multiple="true"
+                    [allowClear]="true"
+                    theme="default"
+                    [ngClass]="getError(productForm, 'sizes')? 'parsley-error': ''"
+                    formControlName="sizes">
+                </ng-select>
+                <ul *ngIf="productForm.controls.sizes.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.sizes.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group" *ngIf="modelsArray.length">
+                <label>{{"models" | translate}}</label>
+                <ng-select
+                    [options]="modelsArray"
+                    placeholder="Select models"
+                    multiple="true"
+                    [allowClear]="true"
+                    theme="default"
+                    [ngClass]="getError(productForm, 'models')? 'parsley-error': ''"
+                    formControlName="models">
+                </ng-select>
+                <ul *ngIf="productForm.controls.models.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.models.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group" *ngIf="flavoursArray.length">
+                <label>{{"flavours" | translate}}</label>
+                <ng-select
+                    [options]="flavoursArray"
+                    placeholder="Select flavours"
+                    multiple="true"
+                    [allowClear]="true"
+                    theme="default"
+                    [ngClass]="getError(productForm, 'flavours')? 'parsley-error': ''"
+                    formControlName="flavours">
+                </ng-select>
+                <ul *ngIf="productForm.controls.flavours.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="productForm.value.flavours.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label>
+                  {{"highlight" | translate}}
+                </label>
+                <div class="switch">
+                  <label for="highlight">
+                    <input type="checkbox"
+                           class="ios"
+                           [checked]="productForm.value.highlight"
+                           formControlName="highlight"
+                           id="highlight"><i></i>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <div class="col-lg-12 pull-right">
+          <button
+              *ngIf="!editData"
+              class="btn btn-primary btn-rounded pull-right"
+              (click)="create()">
+            {{"create" | translate}}
+          </button>
+          <button
+              *ngIf="editData"
+              class="btn btn-primary btn-rounded pull-right"
+              (click)="update()">
+            {{"update" | translate}}
+          </button>
+          <ul *ngIf="error" class="parsley-errors-list filled">
+            <li class="parsley-required">
+              {{error}}
+            </li>
+          </ul>
+          <ul *ngIf="success" class="parsley-errors-list__succes filled">
+            <li>
+              {{success}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -7,7 +7,9 @@ import { SharedModule }  from '../shared/shared.module';
 import { ProductsRoutingModule,
   productsComponents,
   productsProviders } from './products.routes.module';
-
+import { SelectModule } from 'angular2-select';
+import { CKEditorModule } from 'ng2-ckeditor';
+import { GetProductResolve } from './product-create/get-product.resolve';
 
 @NgModule({
   imports: [
@@ -15,10 +17,12 @@ import { ProductsRoutingModule,
     ProductsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    SelectModule,
+    CKEditorModule
   ],
   declarations: [ productsComponents ],
-  providers: [ productsProviders ]
+  providers: [ productsProviders, GetProductResolve ]
 })
 export default class ProductsModule {
 

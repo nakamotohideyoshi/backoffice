@@ -9,6 +9,7 @@ import { CategoriesRoutingModule, routingComponents } from './categories-routes.
 import { CKEditorModule } from 'ng2-ckeditor';
 import { CategoriesResolve } from './create-categories/categories-parents.resolve';
 import { GetCategoriesResolve } from './create-categories/get-categories.resolve';
+import { SelectModule } from 'angular2-select';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { GetCategoriesResolve } from './create-categories/get-categories.resolve
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    CKEditorModule
+    CKEditorModule,
+    SelectModule
   ],
   declarations: [routingComponents],
   providers: [CategoriesResolve, GetCategoriesResolve]

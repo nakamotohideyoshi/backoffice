@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class CreateCategories implements OnInit {
   public pageInfoForm: FormGroup;
-  public parentsArray;
+  public parentsArray = [];
   public editData;
   public categoryRoute: any;
   public error = '';
@@ -22,7 +22,9 @@ export class CreateCategories implements OnInit {
               private route: ActivatedRoute,
               private catService: CategoriesService) {}
   ngOnInit(): void {
-    this.parentsArray = this.route.snapshot.data['parents'].categories;
+    this.route.snapshot.data['parents'].categories.forEach((item) => {
+      this.parentsArray.push({value: item.id, label: item.name});
+    });
     if (this.route.snapshot.data['categories']) {
       this.editData = this.route.snapshot.data['categories'];
     }

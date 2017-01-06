@@ -45,5 +45,9 @@ export class ProductsService {
     return this.http.get(`${this.apiUrl}products/${id}/prices`, this.requestOptions())
       .map(res => res.json());
   }
+  public createProduct(body) {
+    return this.http.post(`${this.apiUrl}products`, body, this.requestOptions())
+      .map(res => res.json());
+  }
 }
 

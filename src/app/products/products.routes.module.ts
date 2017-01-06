@@ -7,6 +7,8 @@ import { ProductsComponent } from './products.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsPricesListComponent } from './products-prices-list/products-prices-list.component';
 import { ProductsPricesListResolve }  from './products-prices-list/products-prices-list.resolve';
+import { ProductCreateComponent } from './product-create/product-create.component';
+import { GetProductResolve } from './product-create/get-product.resolve';
 
 const routes: Routes = [
   {
@@ -17,7 +19,12 @@ const routes: Routes = [
       component: ProductsPricesListComponent,
       resolve: {attributes: ProductsPricesListResolve}
     },
-    { path: 'list', component: ProductsListComponent }
+    { path: 'edit/:id',
+      component: ProductCreateComponent,
+      resolve: { product: GetProductResolve}
+    },
+    { path: 'list', component: ProductsListComponent },
+    { path: 'create', component: ProductCreateComponent }
   ]
   }
 ];
@@ -34,7 +41,8 @@ export const productsComponents = [
   ProductsRoutesComponent,
   ProductsComponent,
   ProductsListComponent,
-  ProductsPricesListComponent
+  ProductsPricesListComponent,
+  ProductCreateComponent
 ];
 
 export const productsProviders = [

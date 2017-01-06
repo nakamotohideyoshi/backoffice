@@ -40,12 +40,6 @@ select.parsley-error, input.parsley-error{
   @include box-shadow(inset 0 1px 1px rgba(221,88,38,0.075));
 }
 
-#parents {
-  height: auto;
-  overflow: hidden;
-  overflow-y: scroll;
-}
-
 .parsley-errors-list{
   font-size: $font-size-smaller;
   padding-left: 0;

@@ -21,6 +21,7 @@
   "primary": "Primary",
   "products_title": "Products",
   "providers_title": "Providers",
+  "product": "Product",
   "add_new_provider": "New Provider",
   "order_email": "Order Email",
   "contact_email": "Contact Email",
@@ -64,5 +65,19 @@
   "add_row_price": "Add row price",
   "per_color": "Per color",
   "once": "Once",
-  "prices": "Prices"
+  "prices": "Prices",
+  "sku": "Sku",
+  "provider_id": "Provider id",
+  "unit": "Unit",
+  "printing_option_id": "Printing option id",
+  "status": "Status",
+  "imprint_included": "Imprint included",
+  "sell_without_imprint": "Sell without imprint",
+  "sort": "Sort",
+  "colors": "Colors",
+  "clothing_sizes": "Clothing sizes",
+  "sizes": "Sizes",
+  "models": "Models",
+  "flavours": "Flavours",
+  "highlight": "Highlight"
 }
