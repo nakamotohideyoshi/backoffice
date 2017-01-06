@@ -49,6 +49,14 @@
   "internal_name": "",
   "start_cost_name": "",
   "start_cost": "",
+  "start_cost_mode": "",
   "price_mode": "",
-  "price_title": ""
+  "price_title": "",
+  "count": "",
+  "price": "",
+  "campaign_price": "",
+  "add_row_price": "",
+  "per_color": "",
+  "once": "",
+  "prices": ""
 }

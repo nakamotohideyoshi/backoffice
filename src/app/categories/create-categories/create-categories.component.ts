@@ -121,7 +121,7 @@ export class CreateCategories implements OnInit {
     let id = this.route.snapshot.params['id'];
     let body = { slug: form.slug };
     this.error = '';
-    let obs = this.catService.addCategoriesRoutesPost(form, id);
+    let obs = this.catService.addCategoriesRoutesPost(body, id);
     if (this.routesForm.value.primary) {
       obs = obs.flatMap(() => this.catService
         .editCategory(body, id)

@@ -14,4 +14,8 @@ export class OptionsService {
     return this.http.get(`${this.baseUrl}printing/options`, this.requestOptions())
       .map( res => res.json());
   }
+  public createOption(body) {
+    return this.http.post(`${this.baseUrl}printing/options`, body, this.requestOptions())
+      .map( res => res.json());
+  }
 }

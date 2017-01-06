@@ -29,9 +29,7 @@ export class CategoriesService {
   }
   public addCategoriesRoutesPost(body, id?) {
     if (!id) id = 0;
-    return this.http.post( `${this.catUrl}routes/category/${id}`,
-      { slug: body['slug'] },
-      this.requestOptions() )
+    return this.http.post( `${this.catUrl}routes/category/${id}`, body, this.requestOptions() )
       .map(res => res.json());
   }
   public editCategory(body, id?) {

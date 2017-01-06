@@ -1,0 +1,194 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <h1 class="page-title">{{"options" | translate}} -
+          <span class="fw-semi-bold">{{"create" | translate}}</span>
+        </h1>
+        <div class="col-lg-12 widget">
+          <form [formGroup]="optionForm">
+            <fieldset>
+              <div class="form-group">
+                <label for="name">{{"Name" | translate}}</label>
+                <input type="text" id="name"
+                       placeholder="Tryckpris/färg"
+                       class="form-control"
+                       [ngClass]="getError(optionForm, 'name')? 'parsley-error': ''"
+                       formControlName="name">
+                <ul *ngIf="optionForm.controls.name.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="optionForm.value.name.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}</li>
+                  <li *ngIf="optionForm.value.name.length > 60"
+                      class="parsley-required">
+                    {{"form_error_length" | translate}} 60!
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="internal_name">{{"internal_name" | translate}}</label>
+                <input type="text" id="internal_name"
+                       placeholder="Print price provider X"
+                       class="form-control"
+                       [ngClass]="getError(optionForm, 'internal_name')? 'parsley-error': ''"
+                       formControlName="internal_name">
+                <ul *ngIf="optionForm.controls.internal_name.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="optionForm.value.internal_name.length == 0"
+                      class="parsley-required">{{"form_error_required" | translate}}</li>
+                  <li *ngIf="optionForm.value.internal_name.length > 60"
+                      class="parsley-required">
+                    {{"form_error_length" | translate}} 60!
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="start_cost_name">{{"start_cost_name" | translate}}</label>
+                <input type="text" id="start_cost_name"
+                       placeholder="Tryckplåt"
+                       class="form-control"
+                       [ngClass]="getError(optionForm, 'start_cost_name')? 'parsley-error': ''"
+                       formControlName="start_cost_name">
+                <ul *ngIf="optionForm.controls.start_cost_name.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="optionForm.value.start_cost_name.length == 0"
+                      class="parsley-required">
+                    {{"form_error_required" | translate}}
+                  </li>
+                  <li *ngIf="optionForm.value.start_cost_name.length > 20"
+                      class="parsley-required">
+                    {{"form_error_length" | translate}} 20!
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="start_cost_name">{{"start_cost" | translate}}</label>
+                <input type="text" id="start_cost"
+                       placeholder="395"
+                       class="form-control"
+                       [ngClass]="getError(optionForm, 'start_cost')? 'parsley-error': ''"
+                       formControlName="start_cost">
+                <ul *ngIf="optionForm.controls.start_cost.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="optionForm.value.start_cost.length == 0"
+                      class="parsley-required">
+                    {{"form_error_required" | translate}}
+                  </li>
+                  <li *ngIf="getErrorTypeNumber(optionForm, 'start_cost')"
+                      class="parsley-required">
+                    {{"form_error_type_number" | translate}}!
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="start_cost_name">{{"start_cost_mode" | translate}}</label>
+                <select name="start_cost_mode"
+                        id="start_cost_mode"
+                        class="form-control"
+                        [ngClass]="getError(optionForm, 'start_cost_mode')? 'parsley-error': ''"
+                        formControlName="start_cost_mode">
+                  <option value="per_color">{{"per_color" | translate}}</option>
+                  <option value="once">{{"once" | translate}}</option>
+                </select>
+                <ul *ngIf="optionForm.controls.start_cost_mode.dirty" class="parsley-errors-list filled">
+                  <li *ngIf="optionForm.value.start_cost_mode.length == 0"
+                      class="parsley-required">
+                    {{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label >{{"prices" | translate}}</label>
+                <ul *ngIf="optionForm.value.prices.length == 0" class="parsley-errors-list filled">
+                  <li class="parsley-required">
+                    {{"form_error_required" | translate}}
+                  </li>
+                </ul>
+              </div>
+              <div *ngFor="let item of optionForm.value.prices; let key = index;">
+                <div [formGroup]="item" class="row padding-bottom-5px">
+                  <div class="col-lg-3">
+                    <label for="count">{{"count" | translate}}</label>
+                    <input type="text" class="form-control"
+                           id="count"
+                           [ngClass]="getError(item, 'count')?'parsley-error': ''"
+                           formControlName="count"
+                           name="count"
+                    >
+                    <ul *ngIf="item.controls.count.dirty" class="parsley-errors-list filled">
+                      <li *ngIf="item.value.count.length == 0"
+                          class="parsley-required">
+                        {{"form_error_required" | translate}}
+                      </li>
+                      <li *ngIf="getErrorTypeNumber(item, 'count')"
+                          class="parsley-required">
+                        {{"form_error_type_number" | translate}}!
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <label for="price">{{"price" | translate}}</label>
+                    <input type="text" class="form-control"
+                           formControlName="price"
+                           name="price"
+                           [ngClass]="getError(item, 'price')? 'parsley-error': ''"
+                           id="price"
+                    >
+                    <ul *ngIf="item.controls.price.dirty" class="parsley-errors-list filled">
+                      <li *ngIf="item.value.price.length == 0"
+                          class="parsley-required">
+                        {{"form_error_required" | translate}}
+                      </li>
+                      <li *ngIf="getErrorTypeNumber(item, 'price')"
+                          class="parsley-required">
+                        {{"form_error_type_number" | translate}}!
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <label for="campaign_price">{{"campaign_price" | translate}}</label>
+                    <input type="text" class="form-control"
+                           formControlName="campaign_price"
+                           name="campaign_price"
+                           [ngClass]="getError(item, 'campaign_price')? 'parsley-error': ''"
+                           id="campaign_price"
+                    >
+                    <ul *ngIf="item.controls.campaign_price.dirty" class="parsley-errors-list filled">
+                      <li *ngIf="item.value.campaign_price.length == 0"
+                          class="parsley-required">
+                        {{"form_error_required" | translate}}
+                      </li>
+                      <li *ngIf="getErrorTypeNumber(item, 'campaign_price')"
+                          class="parsley-required">
+                        {{"form_error_type_number" | translate}}!
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="widget-controls">
+                      <a href="#" (click)="deletePrice($event,key)">
+                        <i class="fa fa-remove"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-success" (click)="addPrice()">
+                <i class="fa fa-plus"></i>{{"add_row_price" | translate}}
+              </button>
+            </fieldset>
+          </form>
+        </div>
+        <div class="col-lg-12 pull-right">
+          <button
+              class="btn btn-primary btn-rounded pull-right"
+              (click)="create()">
+            {{"create" | translate}}
+          </button>
+          <ul *ngIf="error" class="parsley-errors-list filled">
+            <li class="parsley-required">
+              {{error}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

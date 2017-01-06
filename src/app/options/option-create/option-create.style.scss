@@ -1,0 +1,36 @@
+.h-background-color-white {
+  background-color: white;
+}
+
+/***********************************/
+/**            PARSLEY            **/
+/***********************************/
+
+
+select, input {
+  &.parsley-error {
+    border-color: #dd5826;
+    box-shadow: inset 0 1px 1px rgba(221,88,38,0.075);
+  }
+}
+
+#parents {
+  height: auto;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.parsley-errors-list{
+  font-size: 12px;
+  padding-left: 0;
+  margin-bottom: 5px;
+
+  li{
+    list-style: none;
+    color: #dd5826;
+  }
+}
+
+.padding-bottom-5px {
+  padding-bottom: 5px;
+}

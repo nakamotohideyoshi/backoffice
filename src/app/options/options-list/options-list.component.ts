@@ -16,9 +16,15 @@ export class OptionsListComponent implements OnInit {
   public getKeyPrice(object) {
     return Object.keys(object);
   }
-  public getArrayPrice(object) {
+  public getArrayPrice(object, type) {
     let arr = [];
-    Object.keys(object).forEach((item) => arr.push(object[item].price));
+    Object.keys(object).forEach((item) => {
+      if (type === 'price') {
+        arr.push(object[item].price);
+      } else {
+        arr.push(object[item].campaign_price);
+      }
+    });
     return arr;
   }
 }
