@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProvidersService } from '../../shared/service/providers.service';
@@ -13,7 +14,8 @@ export class CreateProvider implements OnInit {
   public providerData;
   public editForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private providerService: ProvidersService) {}
   ngOnInit(): void {
@@ -44,7 +46,7 @@ export class CreateProvider implements OnInit {
     if (!this.editForm.valid) return;
 
     this.providerService.createProvider(this.editForm.value)
-      .subscribe( () => console.log('Created!'),
+      .subscribe( () => this.router.navigate(['/app/providers/list']),
         error => {
           console.log(error);
       });
@@ -54,7 +56,6 @@ export class CreateProvider implements OnInit {
     if (!this.editForm.valid) return;
 
     this.providerService.updateProvider(this.editForm.value, this.providerData.id)
-      .subscribe( () => console.log('Updated!'));
-
+      .subscribe( () => this.router.navigate(['/app/providers/list']));
   }
 }
