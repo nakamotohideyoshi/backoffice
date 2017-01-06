@@ -40,6 +40,8 @@
   "page_info": "Page info",
   "success": "Success",
   "form_error_required": "This value is required.",
+  "form_error_length": "Permissible line length",
+  "form_error_type_number": "Required type number",
   "thank_you": "Thank you",
   "success_text": "Your submission has been received.",
   "previous": "Previous",
@@ -49,6 +51,14 @@
   "internal_name": "Internal name",
   "start_cost_name": "Start cost name",
   "start_cost": "Start cost",
+  "start_cost_mode": "Start cost mode",
   "price_mode": "Price mode",
-  "price_title": "Price"
+  "price_title": "Price",
+  "count": "Count",
+  "price": "Price",
+  "campaign_price": "Campaign price",
+  "add_row_price": "Add row price",
+  "per_color": "Per color",
+  "once": "Once",
+  "prices": "Prices"
 }

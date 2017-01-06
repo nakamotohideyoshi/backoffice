@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <h1 class="page-title">{{"options" | translate}} -
-      <span class="fw-semi-bold">{{"list_title" | translate}}</span></h1>
+      <span class="fw-semi-bold">{{"list_title" | translate}}</span>
+    </h1>
     <div class="col-lg-12">
       <div class="row h-background-color-white">
         <table class="table table-bordered categories-table">
@@ -23,12 +24,20 @@
                 <table class="table table-bordered categories-table">
                   <thead>
                     <tr>
+                      <th>{{"count" | translate}}</th>
                       <th *ngFor="let keyItem of getKeyPrice(item.prices);">{{keyItem}}</th>
                     </tr>
                   </thead>
                   <tbody class="h-background-color-white">
                     <tr>
-                      <td *ngFor="let priceItem of getArrayPrice(item.prices);">{{priceItem}}</td>
+                      <td>{{"price" | translate}}</td>
+                      <td *ngFor="let priceItem of getArrayPrice(item.prices, 'price');">{{priceItem}}</td>
+                    </tr>
+                    <tr>
+                      <td>{{"campaign_price" | translate}}</td>
+                      <td *ngFor="let campaingPriceItem of getArrayPrice(item.prices, 'campaingPrice');">
+                          {{campaingPriceItem}}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
