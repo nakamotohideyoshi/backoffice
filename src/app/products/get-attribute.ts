@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { AttributesService } from '../../shared/service/attributes.service';
+import { AttributesService } from '../shared/service';
 
 import { Observable } from 'rxjs/Rx';
 
 
 @Injectable()
-export class ProductsPricesListResolve implements Resolve<any> {
+export class GetAttributeResolve implements Resolve<any> {
 
-  constructor ( private attributesService: AttributesService) {}
+  constructor (private attributesService: AttributesService) {}
   resolve() {
     return Observable.forkJoin([
       this.attributesService.getAttribute('color'),

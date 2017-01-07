@@ -7,12 +7,15 @@ import {
 } from 'ng2-translate';
 import { CommonModule } from '@angular/common';
 import { Http } from '@angular/http';
-import { CategoriesService } from './service/categories.service';
-import { ProductsService } from './service/products.service';
-import { ProvidersService } from './service/providers.service';
-import { AttributesService } from './service/attributes.service';
-import { PagesService } from './service/pages.service';
-import { OptionsService } from './service/options.service';
+import {
+  CategoriesService,
+  AttributesService,
+  OptionsService,
+  PagesService,
+  ProductsService,
+  ProvidersService
+} from './service';
+
 
 
 @NgModule({

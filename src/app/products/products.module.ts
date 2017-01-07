@@ -9,7 +9,6 @@ import { ProductsRoutingModule,
   productsProviders } from './products.routes.module';
 import { SelectModule } from 'angular2-select';
 import { CKEditorModule } from 'ng2-ckeditor';
-import { GetProductResolve } from './product-create/get-product.resolve';
 
 @NgModule({
   imports: [
@@ -22,7 +21,7 @@ import { GetProductResolve } from './product-create/get-product.resolve';
     CKEditorModule
   ],
   declarations: [ productsComponents ],
-  providers: [ productsProviders, GetProductResolve ]
+  providers: [ productsProviders ]
 })
 export default class ProductsModule {
 

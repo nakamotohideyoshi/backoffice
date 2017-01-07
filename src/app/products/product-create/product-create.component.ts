@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ProvidersService } from '../../shared/service/providers.service';
-import { OptionsService } from '../../shared/service/options.service';
-import { CategoriesService } from '../../shared/service/categories.service';
-import { AttributesService } from '../../shared/service/attributes.service';
-import { ProductsService } from '../../shared/service/products.service';
+import {
+  CategoriesService,
+  AttributesService,
+  OptionsService,
+  ProductsService,
+  ProvidersService
+} from '../../shared/service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

@@ -49,5 +49,14 @@ export class ProductsService {
     return this.http.post(`${this.apiUrl}products`, body, this.requestOptions())
       .map(res => res.json());
   }
+
+  public  addProductPrice(id, body, scope) {
+    return this.http.post(
+      `${this.apiUrl}products/${id}/prices/${scope}`,
+      body,
+      this.requestOptions()
+    )
+      .map(res => res.json());
+  }
 }
 
