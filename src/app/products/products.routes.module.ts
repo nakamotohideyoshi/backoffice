@@ -33,10 +33,13 @@ const routes: Routes = [
     },
     { path: 'edit/:id',
       component: ProductCreateComponent,
-      resolve: { product: GetProductResolve}
+      resolve: { product: GetProductResolve, attributes: GetAttributeResolve}
     },
     { path: 'list', component: ProductsListComponent },
-    { path: 'create', component: ProductCreateComponent }
+    { path: 'create',
+      component: ProductCreateComponent,
+      resolve: {attributes: GetAttributeResolve}
+    }
   ]
   }
 ];

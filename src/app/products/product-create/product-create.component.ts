@@ -35,7 +35,6 @@ export class ProductCreateComponent implements OnInit {
                private providerService: ProvidersService,
                private optionService: OptionsService,
                private categoriesService: CategoriesService,
-               private attribytesSerivce: AttributesService,
                private productService: ProductsService,
                private route: ActivatedRoute) {
     this.unitArray = [
@@ -91,21 +90,21 @@ export class ProductCreateComponent implements OnInit {
       res.categories.forEach((item) =>
         this.categoriesArray.push({value: item.id, label: item.name}));
     });
-    this.attribytesSerivce.getAttribute('colors').subscribe((res) => {
-      res.forEach((item) => this.colorsArray.push({value: item.id, label: item.name}));
-    });
-    this.attribytesSerivce.getAttribute('clothing_size').subscribe((res) => {
-      res.forEach((item) => this.clothingSizesArray.push({value: item.id, label: item.name}));
-    });
-    this.attribytesSerivce.getAttribute('size').subscribe((res) => {
-      res.forEach((item) => this.sizesArray.push({value: item.id, label: item.name}));
-    });
-    this.attribytesSerivce.getAttribute('model').subscribe((res) => {
-      res.forEach((item) => this.modelsArray.push({value: item.id, label: item.name}));
-    });
-    this.attribytesSerivce.getAttribute('flavour').subscribe((res) => {
-      res.forEach((item) => this.flavoursArray.push({value: item.id, label: item.name}));
-    });
+    this.colorsArray = this.route.snapshot.data['attributes'][0].map(
+      item => ({value: item.id, label: item.name})
+    );
+    this.sizesArray = this.route.snapshot.data['attributes'][1].map(
+      item => ({value: item.id, label: item.name})
+    );
+    this.clothingSizesArray = this.route.snapshot.data['attributes'][2].map(
+      item => ({value: item.id, label: item.name})
+    );
+    this.modelsArray = this.route.snapshot.data['attributes'][3].map(
+      item => ({value: item.id, label: item.name})
+    );
+    this.flavoursArray = this.route.snapshot.data['attributes'][4].map(
+      item => ({value: item.id, label: item.name})
+    );
   }
   public getError(form, nameField) {
     return form.controls[nameField].errors && form.controls[nameField].dirty;
@@ -144,7 +143,6 @@ export class ProductCreateComponent implements OnInit {
     if (!this.checkForm()) return;
     this.success = '';
     let id = this.route.snapshot.params['id'];
-    console.log(id);
     this.productService.updateProduct(id, this.productForm.value).subscribe(
       (res) => {
         this.success = 'product update success';
