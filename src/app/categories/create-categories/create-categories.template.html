@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="row">
-      <h1 class="page-title">{{"categories_title" | translate}} -
-        <span *ngIf="!editData" class="fw-semi-bold">{{"create" | translate}}</span>
-        <span *ngIf="editData" class="fw-semi-bold">{{"update" | translate}}</span>
-      </h1>
+        <h1 class="page-title">{{"categories_title" | translate}} -
+          <span *ngIf="!editData" class="fw-semi-bold">{{"create" | translate}}</span>
+          <span *ngIf="editData" class="fw-semi-bold">{{"update" | translate}}</span>
+        </h1>
         <div class="widget col-lg-12">
           <div class="form-wizard">
             <div class="tab-content">
@@ -63,16 +63,17 @@
                         <li class="parsley-required">{{"form_error_required" | translate}}</li>
                       </ul>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="parentsArray.length">
                       <label>{{"parents" | translate}}</label>
-                      <select multiple class="form-control"
-                              id="parents"
-                              [ngClass]="pageInfoForm.controls.parents.errors? 'parsley-error': ''"
-                              formControlName="parents">
-                        <option *ngFor="let parent of parentsArray;"
-                                [value] = "parent.id">{{parent.name}}
-                        </option>
-                      </select>
+                      <ng-select
+                          [options]="parentsArray"
+                          placeholder="Select parents"
+                          multiple="true"
+                          [allowClear]="true"
+                          theme="default"
+                          [ngClass]="pageInfoForm.controls.parents.errors? 'parsley-error': ''"
+                          formControlName="parents">
+                      </ng-select>
                       <ul *ngIf="pageInfoForm.controls.parents.errors" class="parsley-errors-list filled">
                         <li class="parsley-required">{{"form_error_required" | translate}}</li>
                       </ul>
