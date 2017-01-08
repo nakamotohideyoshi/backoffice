@@ -66,6 +66,10 @@
   "add_row_price": "Add row price",
   "per_color": "Per color",
   "once": "Once",
-  "prices": "Prices"
+  "prices": "Prices",
+  "image": "Image",
+  "alt": "Alt",
+  "badges": "Badges",
+  "add_new_badge": "New Badge"
 
 }

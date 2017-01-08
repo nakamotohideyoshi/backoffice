@@ -133,7 +133,26 @@
       </ul>
     </li>
   </ul>
-  
+
+  <ul class="sidebar-nav" data-parent="#sidebar">
+    <li>
+      <a class="collapsed" data-target="#sidebar-badges" data-toggle="collapse">
+        <span class="icon">
+            <i class="fa fa-table"></i>
+        </span>
+        {{"badges" | translate}}
+        <i class="toggle fa fa-angle-down"></i>
+      </a>
+      <ul class="collapse" id="sidebar-badges">
+        <li>
+          <a [routerLink]=" ['badges/list'] ">
+            {{"list_title" | translate}}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
   <ul class="sidebar-nav" data-parent="#sidebar">
     <li>
       <a class="collapsed" data-target="#sidebar-options" data-toggle="collapse">

@@ -13,8 +13,8 @@ const routes: Routes = [
     { path: 'attributes', loadChildren: () => System.import('../attributes/attributes.module') },
     { path: 'pages', loadChildren: () => System.import('../pages/pages.module') },
     { path: 'options', loadChildren: () => System.import('../options/options.module') },
-    { path: 'faqs', loadChildren: () => System.import('../faqs/faqs.module') }
-
+    { path: 'faqs', loadChildren: () => System.import('../faqs/faqs.module') },
+    { path: 'badges', loadChildren: () => System.import('../badges/badges.module') }
   ]}
 ];
 
