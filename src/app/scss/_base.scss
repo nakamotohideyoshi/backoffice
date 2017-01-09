@@ -198,6 +198,10 @@ app, .app {
     text-decoration: none;
   }
 
+  img {
+    max-width: 50px;
+  }
+
   .nav-collapsed &{
     width: $sidebar-icon-state-width;
   }
