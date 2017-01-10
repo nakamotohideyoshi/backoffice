@@ -1,6 +1,5 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { FormsModule, ReactiveFormsModule }  from '@angular/forms';
 
 import { SharedModule }  from '../shared/shared.module';
 import { CKEditorModule } from 'ng2-ckeditor';
@@ -12,8 +11,6 @@ import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
   imports: [
     CommonModule,
     BadgesRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     SharedModule,
     CKEditorModule,
     FileUploadModule

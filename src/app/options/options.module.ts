@@ -5,13 +5,11 @@ import { CommonModule }  from '@angular/common';
 import { routingOptionsComponents, OptionsRoutingModule } from './options-routes.module';
 import { OptionsService } from '../shared/service/options.service';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
     SharedModule,
     OptionsRoutingModule
   ],

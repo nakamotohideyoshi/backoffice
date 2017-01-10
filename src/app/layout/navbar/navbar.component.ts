@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, ElementRef, Output } from '@angular/core';
 import { AppConfig } from '../../app.config';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { SharedModule } from '../../shared/shared.module';
 import { App } from '../../app.component';
 declare var jQuery: any;
@@ -15,9 +18,16 @@ export class Navbar implements OnInit {
   $el: any;
   config: any;
 
-  constructor(el: ElementRef, config: AppConfig) {
+  private searchForm: FormGroup;
+
+  constructor(el: ElementRef, config: AppConfig,
+              private router: Router,
+              private fb: FormBuilder) {
     this.$el = jQuery(el.nativeElement);
     this.config = config.getConfig();
+    this.searchForm = this.fb.group ({
+      searchTerm: ''
+    });
   }
 
   toggleSidebar(state): void {
@@ -51,7 +61,16 @@ export class Navbar implements OnInit {
         [e.type === 'focus' ? 'addClass' : 'removeClass']('focus');
     });
   }
+
   public switchLanguage(lang) {
     SharedModule.translate.use(lang);
+  }
+
+  private searchProducts() {
+    if (!this.searchForm.value['searchTerm']) this.router.navigate(['./app', 'products', 'list']);
+    else this.router.navigate(
+      ['./app', 'products', 'list'],
+      {queryParams: {q: this.searchForm.value['searchTerm']}}
+      );
   }
 }

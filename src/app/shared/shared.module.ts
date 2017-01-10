@@ -5,6 +5,7 @@ import {
   TranslateStaticLoader,
   TranslateService
 } from 'ng2-translate';
+import { FormsModule, ReactiveFormsModule }  from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Http } from '@angular/http';
 
@@ -26,11 +27,13 @@ import {
       provide: TranslateLoader,
       useFactory: (http: Http) => new TranslateStaticLoader(http, './assets/i18n', '.json'),
       deps: [Http]
-    })
+    }),
   ],
   exports: [
     CommonModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 

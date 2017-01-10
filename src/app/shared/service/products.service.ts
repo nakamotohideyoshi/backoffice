@@ -41,6 +41,11 @@ export class ProductsService {
       .map(res => res.json());
   }
 
+  public searchProducts(q) {
+    return this.http.get(`${this.apiUrl}products?search=${q}`, this.requestOptions())
+      .map(res => res.json());
+  }
+
   public  getProductPrices(id) {
     return this.http.get(`${this.apiUrl}products/${id}/prices`, this.requestOptions())
       .map(res => res.json());

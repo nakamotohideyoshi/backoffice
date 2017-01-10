@@ -1,6 +1,5 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { FormsModule, ReactiveFormsModule }  from '@angular/forms';
 
 import { SharedModule }  from '../shared/shared.module';
 import { CKEditorModule } from 'ng2-ckeditor';
@@ -11,8 +10,6 @@ import { GetPageResolve } from './create-page/get-page.resolve';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     SharedModule,
     CKEditorModule
   ],
