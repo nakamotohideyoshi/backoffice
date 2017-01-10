@@ -1,0 +1,24 @@
+.icon-england {
+  &:before {
+    background-image: url("../../../assets/icon/country/England.ico");
+    background-size: contain;
+  }
+}
+
+.icon-sweden {
+  &:before {
+    background-image: url("../../../assets/icon/country/Sweden.ico");
+    background-size: contain;
+  }
+}
+
+.flag-icon {
+  margin-right: 25px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+  }
+}

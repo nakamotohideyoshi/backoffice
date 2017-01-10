@@ -51,9 +51,13 @@ export class SharedModule {
       ]
     };
   }
-  constructor(translate: TranslateService ) {
-    translate.setDefaultLang('en');
-    translate.use('en');
+  constructor(translate: TranslateService) {
+    if (!!SharedModule.translate) {
+      translate.use(SharedModule.translate.currentLang);
+    } else {
+      translate.setDefaultLang('se');
+      translate.use('se');
+    }
     SharedModule.translate = translate;
   }
 }

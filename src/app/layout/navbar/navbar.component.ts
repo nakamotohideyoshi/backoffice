@@ -1,9 +1,12 @@
 import { Component, EventEmitter, OnInit, ElementRef, Output } from '@angular/core';
 import { AppConfig } from '../../app.config';
+import { SharedModule } from '../../shared/shared.module';
+import { App } from '../../app.component';
 declare var jQuery: any;
 
 @Component({
   selector: '[navbar]',
+  styleUrls: [ './navbar.style.scss' ],
   templateUrl: './navbar.template.html'
 })
 export class Navbar implements OnInit {
@@ -47,5 +50,8 @@ export class Navbar implements OnInit {
       jQuery(this).parents('.input-group')
         [e.type === 'focus' ? 'addClass' : 'removeClass']('focus');
     });
+  }
+  public switchLanguage(lang) {
+    SharedModule.translate.use(lang);
   }
 }

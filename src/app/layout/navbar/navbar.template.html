@@ -57,5 +57,24 @@
         </ul>
       </li>
     </ul>
+    <ul class="nav navbar-nav pull-xs-right" (click)="$event.preventDefault()">
+      <li class="nav-item dropdown">
+        <a href class="nav-link dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-globe fa-lg"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li>
+            <a class="dropdown-item" (click)="switchLanguage('en')">
+              <i class="flag-icon icon-england"></i>En
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="switchLanguage('se')">
+              <i class="flag-icon icon-sweden"></i>Sv
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </div>
