@@ -1,3 +1,30 @@
-.h-background-color-white {
-  background-color: white;
+.create-button{
+  margin-bottom: calc(1rem + 6px);
+}
+
+:host /deep/ {
+  .glyphicon-refresh-animate {
+    animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+  }
+
+  @-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+  }
+
+  @keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+  }
+
+  .ag-header-icon {
+    svg {
+      width: 10px !important;
+    }
+  }
+
+  .ag-dark {
+    font-family: inherit;
+  }
 }

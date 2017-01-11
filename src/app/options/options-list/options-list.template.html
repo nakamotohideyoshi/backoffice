@@ -1,57 +1,19 @@
 <div class="container">
   <div class="row">
-    <h1 class="page-title">{{"options" | translate}} -
-      <span class="fw-semi-bold">{{"list_title" | translate}}</span>
-    </h1>
-    <div class="col-lg-12">
-      <div class="row h-background-color-white">
-        <table class="table table-bordered categories-table">
-          <thead>
-            <tr>
-              <th>{{"internal_name" | translate}}</th>
-              <th>{{"start_cost_name" | translate}}</th>
-              <th>{{"start_cost" | translate }}</th>
-              <th>{{"price_mode" | translate}}</th>
-              <th>{{"edit" | translate}} {{button | translate}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of options; let key = index;">
-              <td>{{item.internal_name}}</td>
-              <td>{{item.start_cost_name}}</td>
-              <td>{{item.start_cost}}</td>
-              <td>
-                <table class="table table-bordered categories-table">
-                  <thead>
-                    <tr>
-                      <th>{{"count" | translate}}</th>
-                      <th *ngFor="let keyItem of getKeyPrice(item.prices);">{{keyItem}}</th>
-                    </tr>
-                  </thead>
-                  <tbody class="h-background-color-white">
-                    <tr>
-                      <td>{{"price" | translate}}</td>
-                      <td *ngFor="let priceItem of getArrayPrice(item.prices, 'price');">{{priceItem}}</td>
-                    </tr>
-                    <tr>
-                      <td>{{"campaign_price" | translate}}</td>
-                      <td *ngFor="let campaingPriceItem of getArrayPrice(item.prices, 'campaingPrice');">
-                          {{campaingPriceItem}}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <button class="btn btn-success" disabled>
-                  <i class="fa fa-pencil"></i>
-                  {{"edit" | translate}}
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="col-md-12">
+      <h1 class="page-title">{{"options" | translate}} -
+        <span class="fw-semi-bold">{{"list_title" | translate}}</span>
+      </h1>
+      <button class="btn btn-success create-button"
+              [routerLink]="['../create']">
+        <i class="fa fa-share-alt"></i>
+        {{"create" | translate}} {{"options" | translate}}
+      </button>
+      <ag-grid-ng2 #agGrid style="width: 100%; height: 650px;"
+                   class="ag-dark"
+                   [gridOptions]="gridOptions"
+                   [datasource]="dataSource">
+      </ag-grid-ng2>
     </div>
   </div>
 </div>

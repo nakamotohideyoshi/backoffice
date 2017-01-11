@@ -1,0 +1,20 @@
+<table *ngIf="pricesTable" class="table table-bordered categories-table">
+  <thead>
+  <tr>
+    <th>{{"count" | translate}}</th>
+    <th *ngFor="let keyItem of getKeyPrice(pricesTable);">{{keyItem}}</th>
+  </tr>
+  </thead>
+  <tbody class="h-background-color-white">
+  <tr>
+    <td>{{"price" | translate}}</td>
+    <td *ngFor="let priceItem of getArrayPrice(pricesTable, 'price');">{{priceItem}}</td>
+  </tr>
+  <tr>
+    <td>{{"campaign_price" | translate}}</td>
+    <td *ngFor="let campaingPriceItem of getArrayPrice(pricesTable, 'campaingPrice');">
+      {{campaingPriceItem}}
+    </td>
+  </tr>
+  </tbody>
+</table>

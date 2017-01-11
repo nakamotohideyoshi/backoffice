@@ -24,11 +24,11 @@
       <div class="row h-background-color-white" (click)="$event.preventDefault()">
         <table class="table table-bordered categories-table">
           <thead>
-          <tr>
-            <th>{{"id" | translate}}</th>
-            <th>{{"name" | translate}}</th>
-            <th>{{"edit" | translate}} {{button | translate}}</th>
-          </tr>
+            <tr>
+              <th>{{"id" | translate}}</th>
+              <th>{{"name" | translate}}</th>
+              <th>{{"edit" | translate}} {{button | translate}}</th>
+            </tr>
           </thead>
           <tbody>
           <tr *ngFor="let item of categories;">

@@ -12,6 +12,7 @@ const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -170,6 +171,7 @@ module.exports = function(env) {
         /angular2-hmr/,
         helpers.root('config/modules/angular2-hmr-prod.js')
       ),
+      new ExtractTextPlugin('[name].[hash].css')
 
       /**
        * Plugin: IgnorePlugin

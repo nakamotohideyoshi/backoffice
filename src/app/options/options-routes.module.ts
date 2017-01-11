@@ -3,6 +3,7 @@ import { OptionsComponent } from './options.component';
 import { OptionsListComponent } from './options-list/options-list.component';
 import { NgModule } from '@angular/core/src/metadata/ng_module';
 import { OptionCreateComponent } from './option-create/option-create.component';
+import { OptionRenderPrices } from './option-render-prices/option-render-prices.component';
 
 const routes: Routes = [
   { path: '', component: OptionsComponent, children: [
@@ -24,5 +25,6 @@ export class OptionsRoutingModule {
 export const routingOptionsComponents = [
   OptionsComponent,
   OptionsListComponent,
-  OptionCreateComponent
+  OptionCreateComponent,
+  OptionRenderPrices
 ];

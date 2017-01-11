@@ -11,7 +11,7 @@ const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 /*
  * Webpack Constants
  */
@@ -58,7 +58,6 @@ module.exports = function(options) {
       'polyfills': './src/polyfills.browser.ts',
       'vendor':    './src/vendor.browser.ts',
       'main':      './src/main.browser.ts'
-
     },
 
     /*
@@ -102,7 +101,7 @@ module.exports = function(options) {
             flags: 'g'
           },
           include: [helpers.root('src')]
-        },
+        }
 
       ],
 
@@ -155,9 +154,26 @@ module.exports = function(options) {
          * Returns file content as string
          *
          */
-        {
+        /*{
           test: /\.css$/,
           loaders: ['to-string-loader', 'css-loader']
+        },*/
+        {
+          // site wide css (excluding all css under the app dir)
+          test: /\.css$/,
+          exclude: helpers.root('app'),
+          loader: ExtractTextPlugin.extract({
+            fallbackLoader: "style-loader",
+            loader: "css-loader",
+            devtool: "css-loader?sourceMap"
+          })
+        },
+        {
+          // included styles under the app directory - these are for styles included
+          // with styleUrls
+          test: /\.css$/,
+          include: helpers.root('app'),
+          loader: 'raw'
         },
 
         /* Raw loader support for *.html

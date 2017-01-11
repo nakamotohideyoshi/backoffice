@@ -20,8 +20,13 @@ import 'rxjs/add/operator/mergeMap';
 import 'jquery';
 import 'tether';
 import 'bootstrap';
-import 'widgster'
+import 'widgster';
 import 'pace';
+
+// ag-grid
+import 'ag-grid/dist/styles/ag-grid.css';
+import 'ag-grid/dist/styles/theme-dark.css';
+import 'ag-grid-ng2/main';
 
 if ('production' === ENV) {
   // Production

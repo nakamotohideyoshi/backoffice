@@ -16,8 +16,9 @@ export class ProductsListComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams
       .switchMap( ({ q }) => {
-        if (q) return this.productService.searchProducts(q);
-        else return this.productService.getProducts();
+        if (q) {
+          return this.productService.searchProducts(q);
+        } else return this.productService.getProducts();
       })
       .subscribe(res => this.products = res.products);
   }

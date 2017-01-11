@@ -67,10 +67,13 @@ export class Navbar implements OnInit {
   }
 
   private searchProducts() {
-    if (!this.searchForm.value['searchTerm']) this.router.navigate(['./app', 'products', 'list']);
-    else this.router.navigate(
-      ['./app', 'products', 'list'],
-      {queryParams: {q: this.searchForm.value['searchTerm']}}
+    if (!this.searchForm.value['searchTerm'])  {
+      this.router.navigate(['./app', 'products', 'list']);
+    } else  {
+      this.router.navigate(
+        ['./app', 'products', 'list'],
+        {queryParams: {q: this.searchForm.value['searchTerm']}}
       );
+    }
   }
 }
