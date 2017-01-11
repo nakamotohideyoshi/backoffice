@@ -62,7 +62,7 @@ export class ProductCreateComponent implements OnInit {
       slug: ['', Validators.required],
       imprint_included: false,
       sell_without_imprint: false,
-      sort: ['0', Validators.required],
+      sort: [{ value: '0', disabled: true }, Validators.required],
       categories: ['', Validators.required],
       colors: ['', Validators.required],
       clothing_sizes: ['', Validators.required],
@@ -129,7 +129,7 @@ export class ProductCreateComponent implements OnInit {
           if (nameField !== 'sort') {
             this.productForm.controls[nameField].reset('', { dirty: false});
           } else {
-            this.productForm.controls[nameField].reset('0');
+            this.productForm.controls[nameField].reset({ value: '0', disabled: true });
           }
         });
         this.success = 'success product create';

@@ -1,5 +1,17 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <ol class="breadcrumb custom-breadcrumbs" *ngIf="breadcrumbs.length">
+          <li *ngFor="let item of breadcrumbs; let key = index; let lastItem = last;"
+              class="breadcrumb-item"
+              [ngClass]="lastItem?'active':''">
+            <a *ngIf="!lastItem" (click)="navigateBreadcrumbs(key, item.id)">{{item.label}}</a>
+            <span class="span-breadcrumbs" *ngIf="lastItem">{{item.label}}</span>
+          </li>
+        </ol>
+      </div>
+    </div>
     <h1 class="page-title">Categories - <span class="fw-semi-bold">List</span></h1>
     <div class="col-lg-12">
       <div class="row">
@@ -9,7 +21,7 @@
           {{"create" | translate}} {{"category" | translate}}
       </button>
       </div>
-      <div class="row h-background-color-white">
+      <div class="row h-background-color-white" (click)="$event.preventDefault()">
         <table class="table table-bordered categories-table">
           <thead>
           <tr>
@@ -21,7 +33,7 @@
           <tbody>
           <tr *ngFor="let item of categories;">
             <td>{{item.id}}</td>
-            <td><a [routerLink] = " ['../',item.id]">{{item.name}}</a></td>
+            <td><a href="#" (click)="nextCategories(item.name, item.id)">{{item.name}}</a></td>
             <td>
               <button class="btn btn-success"
                 [routerLink] = " ['../edit', item.id]">
